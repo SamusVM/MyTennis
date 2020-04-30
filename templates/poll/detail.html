@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+
+{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><h5><a href="{% url 'poll_index' %}">Опитування</a></h5></li>
+  <li class="breadcrumb-item active">{{ question.id }}</li>
+
+{% endblock %}
+
+{% block content %}
+<h3>{{ question.question_text }}</h3>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<form action="{%  url 'poll_vote' question.id %}" method="post">
+    {% csrf_token %}
+    {% for choice in question.choice_set.all %}
+        <input type="radio"  name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }} </label>
+        <br>
+    {% endfor %}
+<input class="btn btn-success" type="submit" value="Проголосувати">
+</form>
+{% endblock %}
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Опитування№ {{ question.id }}{% endblock %}
+{% block stylesheet %}
+
+{% endblock %}
+
+
+
+{% block breadcrumb %}
+ <li class="breadcrumb-item"><h5><a href="{% url 'poll_index' %}">Опитування</a></h5></li>
+  <li class="breadcrumb-item">{{ question.id }}</li>
+  <li class="breadcrumb-item active">Результати</li>
+{% endblock %}
+
+{% block content %}
+
+<h3>{{ question.question_text }}</h3>
+
+<ul class="list-group">
+{% for choice in question.choice_set.all %}
+    <li class="list-group-item">{{ choice.choice_text }} - {{ choice.votes }}
+   <div class="progress">
+  <div class="progress-bar" style="width:{{ choice.votes_per }}%"></div>
+</div>
+{#    <span class="badge badge-light">{{ choice.votes }} </span>#}
+    </li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'poll_detail' question.id %}">Проголосувати ще?</a>
+{% endblock %}
