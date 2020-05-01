@@ -23,7 +23,7 @@ class MatchAdmin(admin.ModelAdmin):
     inlines = [SetInline]
     list_display = ('__str__','player1','player2','player3','player4', 'dt' ,'s1', 's2', 'g1','g2')
     list_filter = ['dt']
-    # search_fields = ['player1_name','player2_name','player3_name','player4_name']
+    search_fields = ['player1__person__last_name','player2__person__last_name','player3__person__last_name','player4__person__last_name']
 
 admin.site.register(Match, MatchAdmin)
 admin.site.register(Match_type)
