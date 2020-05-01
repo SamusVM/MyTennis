@@ -9,7 +9,23 @@ admin.site.register(Covering)
 admin.site.register(Game)
 admin.site.register(Game_Log)
 admin.site.register(Hand)
-admin.site.register(Match)
+
+class SetInline(admin.TabularInline):
+    model = Set
+    extra = 1
+class MatchAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None,               {'fields': ['game_type', 'court','dt', 'is_official']}),
+        ('Гравці', {'fields': ['player1','player2', 'player3','player4']}),
+        ('Результати', {'fields': ['g1', 'g2', 's1', 's2']}),
+        ('ПЕреможці', {'fields': ['is_winner', 'winner']}),
+    ]
+    inlines = [SetInline]
+    list_display = ('__str__','player1','player2','player3','player4', 'dt' ,'s1', 's2', 'g1','g2')
+    list_filter = ['dt']
+    # search_fields = ['player1_name','player2_name','player3_name','player4_name']
+
+admin.site.register(Match, MatchAdmin)
 admin.site.register(Match_type)
 admin.site.register(Myimage)
 admin.site.register(News)

@@ -56,6 +56,7 @@ class Hand(models.Model):
     def __str__(self):
         return self.name
 
+
 class Backhand(models.Model):
     name = models.CharField(max_length=20)
     class Meta:
@@ -64,6 +65,30 @@ class Backhand(models.Model):
         ordering = ('name',)
     def __str__(self):
         return self.name
+
+class Country(models.Model):
+    name = models.CharField(max_length=20)
+    flag = models.ImageField()
+
+    class Meta:
+        verbose_name = 'Країна'
+        verbose_name_plural = 'Країни'
+        ordering = ('name',)
+
+    def __str__(self):
+        return self.name
+
+class Brands(models.Model):
+    name = models.CharField(max_length=20)
+    country =  models.ForeignKey(Country, on_delete=models.SET_NULL, blank='TRUE', null='True')
+    class Meta:
+        verbose_name = 'Бренд'
+        verbose_name_plural = 'Бренди'
+        ordering = ('name',)
+    def __str__(self):
+        return self.name
+
+
 
 class Court(models.Model):
     name = models.CharField(max_length=200)
@@ -88,7 +113,8 @@ class Person(models.Model):
     )
     sex = models.CharField(max_length=50,choices=ss, default='M')
     first_name = models.CharField(max_length=50)
-    second_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+
     email = models.EmailField(blank=True,null=True)
     foto = models.ImageField('Фото', upload_to='images', blank=True,null=True)
     d_birth = models.DateField(blank=True,null=True)
@@ -96,22 +122,25 @@ class Person(models.Model):
     class Meta:
         verbose_name = 'Фізична особа'
         verbose_name_plural = 'Фізичні особи'
-        ordering = ('first_name','second_name',)
+        ordering = ('last_name','first_name',)
+    def full_name(self):
+        return self.last_name + ' '+ self.first_name
     def __str__(self):
-        return self.first_name +' '+self.second_name
+        return self.full_name()
+
 
 
 class Player(models.Model):
     person = models.OneToOneField(Person, on_delete=models.CASCADE)
     is_profy = models.BooleanField(default=False)
-    d_start = models.DateField()
+    d_start = models.DateField(blank='TRUE', null='True')
     hand = models.ForeignKey(Hand, on_delete=models.SET_NULL, blank='TRUE', null='True',default=1)
     backhand = models.ForeignKey(Backhand, on_delete=models.SET_NULL, blank='TRUE', null='True',default=1)
-    racket = models.CharField(max_length=50)
-    strings = models.CharField(max_length=50)
-    shoes = models.CharField(max_length=50)
-    balls = models.CharField(max_length=50)
-    atp_players = models.CharField(max_length=50)
+    racket = models.CharField(max_length=50,blank='TRUE', null='True')
+    strings = models.CharField(max_length=50, blank='TRUE', null='True')
+    shoes = models.CharField(max_length=50,blank='TRUE', null='True')
+    balls = models.CharField(max_length=50,blank='TRUE', null='True')
+    atp_players = models.CharField(max_length=50,blank='TRUE', null='True')
     class Meta:
         verbose_name = 'Гравець'
         verbose_name_plural = 'Гравці'
@@ -185,7 +214,7 @@ class Match(models.Model):
         verbose_name_plural = 'Матчі'
         ordering = ('-dt',)
     def __str__(self):
-        if self.player2 &self.player4:
+        if self.player3 and self.player4:
             return self.player1.__str__()+'/'+self.player3 .__str__() +' - '+ self.player2.__str__()+'/'+self.player4 .__str__()
         else:
             return self.player1.__str__()  + ' - ' + self.player2.__str__()
@@ -196,7 +225,7 @@ class Set(models.Model):
     dt = models.DateTimeField(blank=True,null=True)
     g1 = models.IntegerField(default=0)
     g2 = models.IntegerField(default=0)
-    is_tiebreak = models.BooleanField(default=True)
+    is_tiebreak = models.BooleanField(default=False)
     tb1 = models.IntegerField(default=0)
     tb2 = models.IntegerField(default=0)
     is_winner = models.BooleanField(default=True)
@@ -206,7 +235,7 @@ class Set(models.Model):
         verbose_name_plural = 'Сети'
         ordering = ('-match',)
     def __str__(self):
-        return self.match.__str__() + ' set '+self.nn
+        return self.match.__str__() + ' set '+str(self.nn)
 
 class Game(models.Model):
     set = models.ForeignKey(Set, db_index=True, on_delete=models.SET_NULL, blank='TRUE', null='True')
@@ -307,7 +336,6 @@ class Question(models.Model):
     was_published_recently.boolean = True
     was_published_recently.short_description = 'Published recently?'
     def all_votes(self):
-
         return self.choice_set.aggregate(Sum('votes'))#self.objects.aggregate(Choice.votes)
 
 
