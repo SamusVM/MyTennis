@@ -16,12 +16,12 @@ admin.site.register(Hand)
 class SetInline(admin.TabularInline):
     model = Set
     extra = 1
+
 class MatchAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,               {'fields': ['game_type', 'court','dt', 'is_official']}),
-        ('Гравці', {'fields': ['player1','player2', 'player3','player4']}),
-        ('Результати', {'fields': ['g1', 'g2', 's1', 's2']}),
-        ('ПЕреможці', {'fields': ['is_winner', 'winner']}),
+        (None,               {'fields': [('game_type', 'court','dt', 'is_official','tourney_group')]}),
+        ('Гравці', {'fields': [('player1','player2'), ('player3','player4')]}),
+        ('Результати', {'fields': [('s1', 's2', 'g1', 'g2','is_winner', 'winner' )]}),
     ]
     inlines = [SetInline]
     list_display = ('__str__','player1','player2','player3','player4', 'dt' ,'s1', 's2', 'g1','g2')
@@ -64,13 +64,13 @@ admin.site.register(Stadium)
 admin.site.register(Tag)
 admin.site.register(Tourney_Group)
 admin.site.register(Tourney)
-admin.site.register(Torney_Group_Name)
+admin.site.register(Tourney_Group_Name)
 
 class PlayerInline(admin.StackedInline):
     model = Player
     extra = 4
 
-class Torney_Group_Player_Admin(admin.ModelAdmin):
+class Tourney_Group_Player_Admin(admin.ModelAdmin):
     fieldsets = [
         ('Турнір',               {'fields': ['tourney_group']}),
         ('Гравець', {'fields': ['nn','player']}),
@@ -80,9 +80,9 @@ class Torney_Group_Player_Admin(admin.ModelAdmin):
     ordering = ['tourney_group','nn']
     list_filter = ['tourney_group__tourney__name','tourney_group__name']
     search_fields = ['tourney_group']
-admin.site.register(Torney_Group_Player,Torney_Group_Player_Admin)
+admin.site.register(Tourney_Group_Player,Tourney_Group_Player_Admin)
 
-admin.site.register(Torney_Round)
+admin.site.register(Tourney_Round)
 admin.site.register(Winner_type)
 
 

@@ -1,3 +1,5 @@
+from builtins import set
+
 from django.db import models
 from django.utils import timezone
 from  django.db.models import Sum
@@ -234,11 +236,54 @@ class Winner_type(models.Model):
     def __str__(self):
         return self.name
 
+class Tourney_Group_Name(models.Model):
+    name = models.CharField(max_length=50)
+    class Meta:
+        verbose_name = 'Турнірна група(назва)'
+        verbose_name_plural = 'Турнірні групи(назва)'
+        ordering = ('name',)
+    def __str__(self):
+        return self.name
+
+class Tourney_Round(models.Model):
+    name = models.CharField(max_length=50)
+    n_playr = models.IntegerField(default=0)
+    class Meta:
+        verbose_name = 'Раунд'
+        verbose_name_plural = 'Раунди'
+        ordering = ('name',)
+    def __str__(self):
+        return self.name
+
+class Tourney(models.Model):
+    name = models.CharField(max_length=200)
+    dt = models.DateField(blank='True', null= 'True')
+    rules = models.TextField()
+    stadium = models.ForeignKey(Stadium, on_delete=models.SET_NULL, blank='TRUE', null='True')
+    court = models.ForeignKey(Court, on_delete=models.SET_NULL, blank='TRUE', null='True')
+    class Meta:
+        verbose_name = 'Турнір'
+        verbose_name_plural = 'Турніри'
+        ordering = ('-dt',)
+    def __str__(self):
+        return self.name
+
+class Tourney_Group(models.Model):
+    name = models.CharField(max_length=50)
+    tourney = models.ForeignKey(Tourney, on_delete=models.SET_NULL, blank='TRUE', null='True')
+    class Meta:
+        verbose_name = 'Турнірна група'
+        verbose_name_plural = 'Турнірні групи'
+        ordering = ('name',)
+    def __str__(self):
+        return self.tourney.__str__() +'  ' +self.name
+
 class Match(models.Model):
     game_type = models.ForeignKey(Match_type,db_index=True, on_delete=models.SET_NULL, blank='TRUE', null='True')
     court = models.ForeignKey(Court, on_delete=models.SET_NULL, blank='TRUE', null='True')
     dt = models.DateTimeField(blank=True,null=True)
     is_official = models.BooleanField(default=True)
+    tourney_group = models.ForeignKey(Tourney_Group, on_delete=models.SET_NULL, blank='TRUE', null='True')
     player1 = models.ForeignKey(Player, related_name='p1',db_index=True, on_delete=models.SET_NULL, blank='TRUE', null='True')
     player2 = models.ForeignKey(Player, related_name='p2',db_index=True,on_delete=models.SET_NULL, blank='TRUE', null='True')
     player3 = models.ForeignKey(Player, related_name='p3',db_index=True,on_delete=models.SET_NULL, blank='TRUE', null='True')
@@ -254,10 +299,17 @@ class Match(models.Model):
         verbose_name_plural = 'Матчі'
         ordering = ('-dt',)
     def __str__(self):
+        rez =' '+ str(self.s1)+':'+str(self.s2)
+        r2 =''
+        for s in self.set_set.all():
+            r2 = r2 + str(s)+' '
+        if r2:
+            r2 = ' ('+r2+')'
+            rez = rez+r2
         if self.player3 and self.player4:
-            return self.player1.__str__()+'/'+self.player3 .__str__() +' - '+ self.player2.__str__()+'/'+self.player4 .__str__()
+            return self.player1.__str__()+'/'+self.player3 .__str__() +' - '+ self.player2.__str__()+'/'+self.player4 .__str__() +  rez
         else:
-            return self.player1.__str__()  + ' - ' + self.player2.__str__()
+            return self.player1.__str__()  + ' - ' + self.player2.__str__()+rez
 
 class Set(models.Model):
     match = models.ForeignKey(Match, db_index=True, on_delete=models.SET_NULL, blank='TRUE', null='True')
@@ -275,7 +327,7 @@ class Set(models.Model):
         verbose_name_plural = 'Сети'
         ordering = ('-match',)
     def __str__(self):
-        return self.match.__str__() + ' set '+str(self.nn)
+        return  str(self.g1)+':'+str(self.g2)
 
 class Game(models.Model):
     set = models.ForeignKey(Set, db_index=True, on_delete=models.SET_NULL, blank='TRUE', null='True')
@@ -317,49 +369,28 @@ class Player_Rank(models.Model):
         verbose_name_plural = 'Рейтинги'
         ordering = ('-dt',)
 
-class Torney_Group_Name(models.Model):
-    name = models.CharField(max_length=50)
-    class Meta:
-        verbose_name = 'Турнірна група(назва)'
-        verbose_name_plural = 'Турнірні групи(назва)'
-        ordering = ('name',)
-    def __str__(self):
-        return self.name
+# class Tourney_Group_Name(models.Model):
+#     name = models.CharField(max_length=50)
+#     class Meta:
+#         verbose_name = 'Турнірна група(назва)'
+#         verbose_name_plural = 'Турнірні групи(назва)'
+#         ordering = ('name',)
+#     def __str__(self):
+#         return self.name
+#
+# class Tourney_Round(models.Model):
+#     name = models.CharField(max_length=50)
+#     n_playr = models.IntegerField(default=0)
+#     class Meta:
+#         verbose_name = 'Раунд'
+#         verbose_name_plural = 'Раунди'
+#         ordering = ('name',)
+#     def __str__(self):
+#         return self.name
 
-class Torney_Round(models.Model):
-    name = models.CharField(max_length=50)
-    n_playr = models.IntegerField(default=0)
-    class Meta:
-        verbose_name = 'Раунд'
-        verbose_name_plural = 'Раунди'
-        ordering = ('name',)
-    def __str__(self):
-        return self.name
 
-class Tourney(models.Model):
-    name = models.CharField(max_length=200)
-    dt = models.DateField(blank='True', null= 'True')
-    rules = models.TextField()
-    stadium = models.ForeignKey(Stadium, on_delete=models.SET_NULL, blank='TRUE', null='True')
-    court = models.ForeignKey(Court, on_delete=models.SET_NULL, blank='TRUE', null='True')
-    class Meta:
-        verbose_name = 'Турнір'
-        verbose_name_plural = 'Турніри'
-        ordering = ('-dt',)
-    def __str__(self):
-        return self.name
 
-class Tourney_Group(models.Model):
-    name = models.CharField(max_length=50)
-    tourney = models.ForeignKey(Tourney, on_delete=models.SET_NULL, blank='TRUE', null='True')
-    class Meta:
-        verbose_name = 'Турнірна група'
-        verbose_name_plural = 'Турнірні групи'
-        ordering = ('name',)
-    def __str__(self):
-        return self.tourney.__str__() +'  ' +self.name
-
-class Torney_Group_Player(models.Model):
+class Tourney_Group_Player(models.Model):
     tourney_group = models.ForeignKey(Tourney_Group, on_delete=models.SET_NULL, blank='TRUE', null='True')
     nn = models.IntegerField(default=0)
     player = models.ForeignKey(Player, on_delete=models.SET_NULL, blank='TRUE', null='True')

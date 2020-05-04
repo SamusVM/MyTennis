@@ -7,6 +7,9 @@ from django.conf import settings
 urlpatterns = [
     path('', views.index, name='index'),
     path('news/', views.NewsIndexView.as_view(), name='news_index'),
+    path('tourney/', views.tourney_index, name='tourney_index'),
+    path('tourney/<int:question_id>', views.tourney_detail, name='tourney_detail'),
+    path('tourney/spring2020/', views.tourney_spring2020, name='tourney_spring2020'),
     # path('poll/', views.poll_index, name='poll_index'),
     # path('poll/<int:question_id>/', views.poll_detail, name='poll_detail'),
     # # ex: /polls/5/results/

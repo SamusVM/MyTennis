@@ -18,6 +18,27 @@ def poll_index(request):
     }
     return  render(request,'poll/poll_index.html',context)
 
+def tourney_spring2020(request):
+    latest_question_list = Question.objects.order_by('-pub_date')[:5]
+    context = {
+        'latest_question_list': latest_question_list,
+    }
+    return  render(request,'poll/poll_index.html',context)
+
+def tourney_index(request):
+    latest_question_list = Question.objects.order_by('-pub_date')[:5]
+    context = {
+        'latest_question_list': latest_question_list,
+    }
+    return  render(request,'poll/poll_index.html',context)
+
+def tourney_detail(request):
+    latest_question_list = Question.objects.order_by('-pub_date')[:5]
+    context = {
+        'latest_question_list': latest_question_list,
+    }
+    return  render(request,'poll/poll_index.html',context)
+
 class PollIndexView(generic.ListView):
     template_name = 'poll/poll_index.html'
     context_object_name =  'latest_question_list'
@@ -30,7 +51,6 @@ class NewsIndexView(generic.ListView):
     def get_queryset(self):
         # return News.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:10]
         return News.objects.all().order_by('-pub_date')[:10]
-
 
 
 class PollDetailView(generic.DetailView):
