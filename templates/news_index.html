@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Новини тенісу Перечина{% endblock %}
+{% block stylesheet %}
+
+{% endblock %}
+
+{% block breadcrumb %}
+ <li class="breadcrumb-item" ><h5><a href="{% url 'news_index' %}">Новини</a></h5></li>
+
+{% endblock %}
+
+{% block content %}
+
+{% if latest_news %}
+    <ul class="list-group">
+    {% for news in latest_news %}
+     <div class="card shadow-lg p-4 mb-4">
+
+
+        <div class="card-header {% if news.strong %} bg-info {% else %}bg-light {% endif %}">
+         <h5> {{ news.caption }}  </h5>
+
+     </div>
+        <div class="card-body">
+            <img src="../media/{{ news.foto }}" width="{{ news.foto_per }}%" class="float-right">
+            {{ news.text|linebreaksbr }}
+
+
+        </div>
+        <div class="card-footer"> <span class="float-right">{{ news.pub_date|date:"d.m.Y" }}</span>   </div>
+    </div>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Список новин порожній.</p>
+{% endif %}
+</div>
+{% endblock %}

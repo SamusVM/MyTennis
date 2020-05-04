@@ -68,7 +68,7 @@ class Backhand(models.Model):
 
 class Country(models.Model):
     name = models.CharField(max_length=20)
-    flag = models.ImageField()
+    flag = models.ImageField(upload_to='images', blank='TRUE', null='True')
 
     class Meta:
         verbose_name = 'Країна'
@@ -80,6 +80,7 @@ class Country(models.Model):
 
 class Brands(models.Model):
     name = models.CharField(max_length=20)
+    logo =  models.ImageField(upload_to='images', blank='TRUE', null='True')
     country =  models.ForeignKey(Country, on_delete=models.SET_NULL, blank='TRUE', null='True')
     class Meta:
         verbose_name = 'Бренд'
@@ -89,6 +90,45 @@ class Brands(models.Model):
         return self.name
 
 
+class Rackets(models.Model):
+    name = models.CharField(max_length=100)
+    brand =  models.ForeignKey(Brands, on_delete=models.SET_NULL, blank='TRUE', null='True')
+    class Meta:
+        verbose_name = 'Ракетка'
+        verbose_name_plural = 'Ракетки'
+        ordering = ('name',)
+    def __str__(self):
+        return self.name
+
+class Strings(models.Model):
+    name = models.CharField(max_length=100)
+    brand =  models.ForeignKey(Brands, on_delete=models.SET_NULL, blank='TRUE', null='True')
+    class Meta:
+        verbose_name = 'Струна'
+        verbose_name_plural = 'Струни'
+        ordering = ('name',)
+    def __str__(self):
+        return self.name
+
+class Shoes(models.Model):
+    name = models.CharField(max_length=100)
+    brand =  models.ForeignKey(Brands, on_delete=models.SET_NULL, blank='TRUE', null='True')
+    class Meta:
+        verbose_name = 'Кросовки'
+        verbose_name_plural = 'Кросовки'
+        ordering = ('name',)
+    def __str__(self):
+        return self.name
+
+class Balls(models.Model):
+    name = models.CharField(max_length=100)
+    brand =  models.ForeignKey(Brands, on_delete=models.SET_NULL, blank='TRUE', null='True')
+    class Meta:
+        verbose_name = "М'яч"
+        verbose_name_plural = "М'ячі"
+        ordering = ('name',)
+    def __str__(self):
+        return self.name
 
 class Court(models.Model):
     name = models.CharField(max_length=200)
@@ -136,10 +176,10 @@ class Player(models.Model):
     d_start = models.DateField(blank='TRUE', null='True')
     hand = models.ForeignKey(Hand, on_delete=models.SET_NULL, blank='TRUE', null='True',default=1)
     backhand = models.ForeignKey(Backhand, on_delete=models.SET_NULL, blank='TRUE', null='True',default=1)
-    racket = models.CharField(max_length=50,blank='TRUE', null='True')
-    strings = models.CharField(max_length=50, blank='TRUE', null='True')
-    shoes = models.CharField(max_length=50,blank='TRUE', null='True')
-    balls = models.CharField(max_length=50,blank='TRUE', null='True')
+    racket = models.ForeignKey(Rackets, on_delete=models.SET_NULL, blank='TRUE', null='True',default=1)
+    strings = models.ForeignKey(Strings, on_delete=models.SET_NULL, blank='TRUE', null='True',default=1)
+    shoes = models.ForeignKey(Shoes, on_delete=models.SET_NULL, blank='TRUE', null='True',default=1)
+    balls =models.ForeignKey(Balls, on_delete=models.SET_NULL, blank='TRUE', null='True',default=1)
     atp_players = models.CharField(max_length=50,blank='TRUE', null='True')
     class Meta:
         verbose_name = 'Гравець'
@@ -300,6 +340,7 @@ class Tourney(models.Model):
     name = models.CharField(max_length=200)
     dt = models.DateField(blank='True', null= 'True')
     rules = models.TextField()
+    stadium = models.ForeignKey(Stadium, on_delete=models.SET_NULL, blank='TRUE', null='True')
     court = models.ForeignKey(Court, on_delete=models.SET_NULL, blank='TRUE', null='True')
     class Meta:
         verbose_name = 'Турнір'
@@ -316,15 +357,18 @@ class Tourney_Group(models.Model):
         verbose_name_plural = 'Турнірні групи'
         ordering = ('name',)
     def __str__(self):
-        return self.name + self.tourney.__str__()
+        return self.tourney.__str__() +'  ' +self.name
 
 class Torney_Group_Player(models.Model):
     tourney_group = models.ForeignKey(Tourney_Group, on_delete=models.SET_NULL, blank='TRUE', null='True')
+    nn = models.IntegerField(default=0)
     player = models.ForeignKey(Player, on_delete=models.SET_NULL, blank='TRUE', null='True')
     class Meta:
         verbose_name = 'Гравець турніру'
         verbose_name_plural = 'Гравці турніру'
         ordering = ('tourney_group','player',)
+    def __str__(self):
+        return  self.tourney_group.__str__() + '  '+ self.player.__str__()
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
@@ -369,8 +413,11 @@ class Tag(models.Model):
 
 class News(models.Model):
     pub_date = models.DateTimeField()
+    strong = models.BooleanField(default=False)
     caption = models.CharField(max_length=200, primary_key=True)
     text = models.TextField()
+    foto = models.ImageField('Фото', upload_to='images', blank=True,null=True)
+    foto_per  = models.IntegerField(default=40)
     class Meta:
         verbose_name = 'Новина'
         verbose_name_plural = 'Новини'

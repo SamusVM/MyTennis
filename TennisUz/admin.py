@@ -2,8 +2,11 @@ from django.contrib import admin
 from .models import *
 
 admin.site.register(Backhand)
-# admin.site.register(Choice)
+admin.site.register(Balls)
+admin.site.register(Brands)
 admin.site.register(City)
+
+admin.site.register(Country)
 admin.site.register(Court)
 admin.site.register(Covering)
 admin.site.register(Game)
@@ -49,17 +52,36 @@ class QuestionAdmin(admin.ModelAdmin):
     search_fields = ['question_text']
 
 admin.site.register(Question, QuestionAdmin)
-
+admin.site.register(Rackets)
 admin.site.register(Region)
 admin.site.register(Set)
+admin.site.register(Shoes)
 admin.site.register(Shot_Hand)
 admin.site.register(Shot_Type)
+admin.site.register(Strings)
+
 admin.site.register(Stadium)
 admin.site.register(Tag)
 admin.site.register(Tourney_Group)
 admin.site.register(Tourney)
 admin.site.register(Torney_Group_Name)
-admin.site.register(Torney_Group_Player)
+
+class PlayerInline(admin.StackedInline):
+    model = Player
+    extra = 4
+
+class Torney_Group_Player_Admin(admin.ModelAdmin):
+    fieldsets = [
+        ('Турнір',               {'fields': ['tourney_group']}),
+        ('Гравець', {'fields': ['nn','player']}),
+    ]
+    # inlines = [PlayerInline]
+    list_display = ('tourney_group','nn', 'player')
+    ordering = ['tourney_group','nn']
+    list_filter = ['tourney_group__tourney__name','tourney_group__name']
+    search_fields = ['tourney_group']
+admin.site.register(Torney_Group_Player,Torney_Group_Player_Admin)
+
 admin.site.register(Torney_Round)
 admin.site.register(Winner_type)
 

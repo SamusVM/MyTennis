@@ -12,302 +12,267 @@
     <collation id="4" parent="1" name="NOCASE"/>
     <collation id="5" parent="1" name="RTRIM"/>
     <table id="6" parent="2" name="TennisUz_backhand"/>
-    <table id="7" parent="2" name="TennisUz_choice"/>
-    <table id="8" parent="2" name="TennisUz_city"/>
-    <table id="9" parent="2" name="TennisUz_court"/>
-    <table id="10" parent="2" name="TennisUz_covering"/>
-    <table id="11" parent="2" name="TennisUz_game"/>
-    <table id="12" parent="2" name="TennisUz_game_log"/>
-    <table id="13" parent="2" name="TennisUz_hand"/>
-    <table id="14" parent="2" name="TennisUz_match"/>
-    <table id="15" parent="2" name="TennisUz_match_type"/>
-    <table id="16" parent="2" name="TennisUz_person"/>
-    <table id="17" parent="2" name="TennisUz_place_court"/>
-    <table id="18" parent="2" name="TennisUz_player"/>
-    <table id="19" parent="2" name="TennisUz_player_rank"/>
-    <table id="20" parent="2" name="TennisUz_question"/>
-    <table id="21" parent="2" name="TennisUz_region"/>
-    <table id="22" parent="2" name="TennisUz_set"/>
-    <table id="23" parent="2" name="TennisUz_shot_hand"/>
-    <table id="24" parent="2" name="TennisUz_shot_type"/>
-    <table id="25" parent="2" name="TennisUz_stadium"/>
-    <table id="26" parent="2" name="TennisUz_torney_group_name"/>
-    <table id="27" parent="2" name="TennisUz_torney_group_player"/>
-    <table id="28" parent="2" name="TennisUz_torney_round"/>
-    <table id="29" parent="2" name="TennisUz_tourney"/>
-    <table id="30" parent="2" name="TennisUz_tourney_group"/>
-    <table id="31" parent="2" name="TennisUz_winner_type"/>
-    <table id="32" parent="2" name="auth_group"/>
-    <table id="33" parent="2" name="auth_group_permissions"/>
-    <table id="34" parent="2" name="auth_permission"/>
-    <table id="35" parent="2" name="auth_user"/>
-    <table id="36" parent="2" name="auth_user_groups"/>
-    <table id="37" parent="2" name="auth_user_user_permissions"/>
-    <table id="38" parent="2" name="django_admin_log"/>
-    <table id="39" parent="2" name="django_content_type"/>
-    <table id="40" parent="2" name="django_migrations"/>
-    <table id="41" parent="2" name="django_session"/>
-    <table id="42" parent="2" name="sqlite_master">
+    <table id="7" parent="2" name="TennisUz_balls"/>
+    <table id="8" parent="2" name="TennisUz_brands"/>
+    <table id="9" parent="2" name="TennisUz_choice"/>
+    <table id="10" parent="2" name="TennisUz_city"/>
+    <table id="11" parent="2" name="TennisUz_country"/>
+    <table id="12" parent="2" name="TennisUz_court"/>
+    <table id="13" parent="2" name="TennisUz_covering"/>
+    <table id="14" parent="2" name="TennisUz_game"/>
+    <table id="15" parent="2" name="TennisUz_game_log"/>
+    <table id="16" parent="2" name="TennisUz_hand"/>
+    <table id="17" parent="2" name="TennisUz_match"/>
+    <table id="18" parent="2" name="TennisUz_match_type"/>
+    <table id="19" parent="2" name="TennisUz_myimage"/>
+    <table id="20" parent="2" name="TennisUz_news"/>
+    <table id="21" parent="2" name="TennisUz_order_court"/>
+    <table id="22" parent="2" name="TennisUz_person"/>
+    <table id="23" parent="2" name="TennisUz_place_court"/>
+    <table id="24" parent="2" name="TennisUz_player"/>
+    <table id="25" parent="2" name="TennisUz_player_rank"/>
+    <table id="26" parent="2" name="TennisUz_question"/>
+    <table id="27" parent="2" name="TennisUz_rackets"/>
+    <table id="28" parent="2" name="TennisUz_region"/>
+    <table id="29" parent="2" name="TennisUz_set"/>
+    <table id="30" parent="2" name="TennisUz_shoes"/>
+    <table id="31" parent="2" name="TennisUz_shot_hand"/>
+    <table id="32" parent="2" name="TennisUz_shot_type"/>
+    <table id="33" parent="2" name="TennisUz_stadium"/>
+    <table id="34" parent="2" name="TennisUz_strings"/>
+    <table id="35" parent="2" name="TennisUz_tag"/>
+    <table id="36" parent="2" name="TennisUz_torney_group_name"/>
+    <table id="37" parent="2" name="TennisUz_torney_group_player"/>
+    <table id="38" parent="2" name="TennisUz_torney_round"/>
+    <table id="39" parent="2" name="TennisUz_tourney"/>
+    <table id="40" parent="2" name="TennisUz_tourney_group"/>
+    <table id="41" parent="2" name="TennisUz_winner_type"/>
+    <table id="42" parent="2" name="auth_group"/>
+    <table id="43" parent="2" name="auth_group_permissions"/>
+    <table id="44" parent="2" name="auth_permission"/>
+    <table id="45" parent="2" name="auth_user"/>
+    <table id="46" parent="2" name="auth_user_groups"/>
+    <table id="47" parent="2" name="auth_user_user_permissions"/>
+    <table id="48" parent="2" name="django_admin_log"/>
+    <table id="49" parent="2" name="django_content_type"/>
+    <table id="50" parent="2" name="django_migrations"/>
+    <table id="51" parent="2" name="django_session"/>
+    <table id="52" parent="2" name="sqlite_master">
       <System>1</System>
     </table>
-    <table id="43" parent="2" name="sqlite_sequence">
+    <table id="53" parent="2" name="sqlite_sequence">
       <System>1</System>
     </table>
-    <column id="44" parent="6" name="id">
+    <column id="54" parent="6" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="45" parent="6" name="name">
+    <column id="55" parent="6" name="name">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="46" parent="6">
+    <key id="56" parent="6">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="47" parent="7" name="id">
+    <column id="57" parent="7" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="48" parent="7" name="choice_text">
+    <column id="58" parent="7" name="name">
+      <Position>2</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="59" parent="7" name="brand_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <index id="60" parent="7" name="TennisUz_balls_brand_id_493a13f9">
+      <ColNames>brand_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="61" parent="7">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="62" parent="7">
+      <ColNames>brand_id</ColNames>
+      <RefTableName>TennisUz_brands</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="63" parent="8" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="64" parent="8" name="name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="65" parent="8" name="country_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="66" parent="8" name="logo">
+      <Position>4</Position>
+      <DataType>varchar(100)|0s</DataType>
+    </column>
+    <index id="67" parent="8" name="TennisUz_brands_country_id_44b98677">
+      <ColNames>country_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="68" parent="8">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="69" parent="8">
+      <ColNames>country_id</ColNames>
+      <RefTableName>TennisUz_country</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="70" parent="9" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="71" parent="9" name="choice_text">
       <Position>2</Position>
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="49" parent="7" name="votes">
+    <column id="72" parent="9" name="votes">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="50" parent="7" name="question_id">
+    <column id="73" parent="9" name="question_id">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="51" parent="7" name="TennisUz_choice_question_id_001b3342">
+    <index id="74" parent="9" name="TennisUz_choice_question_id_001b3342">
       <ColNames>question_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="52" parent="7">
+    <key id="75" parent="9">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="53" parent="7">
+    <foreign-key id="76" parent="9">
       <ColNames>question_id</ColNames>
       <RefTableName>TennisUz_question</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <column id="54" parent="8" name="id">
+    <column id="77" parent="10" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="55" parent="8" name="name">
+    <column id="78" parent="10" name="name">
       <Position>2</Position>
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="56" parent="8" name="post_code">
+    <column id="79" parent="10" name="post_code">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="57" parent="8" name="region_id">
+    <column id="80" parent="10" name="region_id">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
     </column>
-    <index id="58" parent="8" name="TennisUz_city_region_id_7d94be53">
+    <index id="81" parent="10" name="TennisUz_city_region_id_7d94be53">
       <ColNames>region_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="59" parent="8">
+    <key id="82" parent="10">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="60" parent="8">
+    <foreign-key id="83" parent="10">
       <ColNames>region_id</ColNames>
       <RefTableName>TennisUz_region</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <column id="61" parent="9" name="id">
+    <column id="84" parent="11" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="62" parent="9" name="name">
+    <column id="85" parent="11" name="name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="86" parent="11" name="flag">
+      <Position>3</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="87" parent="11">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="88" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="89" parent="12" name="name">
       <Position>2</Position>
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="63" parent="9" name="allows_doubles">
+    <column id="90" parent="12" name="allows_doubles">
       <Position>3</Position>
       <DataType>bool|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="64" parent="9" name="is_roof">
+    <column id="91" parent="12" name="is_roof">
       <Position>4</Position>
       <DataType>bool|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="65" parent="9" name="act">
+    <column id="92" parent="12" name="act">
       <Position>5</Position>
       <DataType>bool|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="66" parent="9" name="covering_id">
+    <column id="93" parent="12" name="covering_id">
       <Position>6</Position>
       <DataType>integer|0s</DataType>
     </column>
-    <column id="67" parent="9" name="stadium_id">
+    <column id="94" parent="12" name="stadium_id">
       <Position>7</Position>
       <DataType>integer|0s</DataType>
     </column>
-    <index id="68" parent="9" name="TennisUz_court_covering_id_303e12e8">
+    <index id="95" parent="12" name="TennisUz_court_covering_id_303e12e8">
       <ColNames>covering_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <index id="69" parent="9" name="TennisUz_court_stadium_id_e23d9e4c">
+    <index id="96" parent="12" name="TennisUz_court_stadium_id_e23d9e4c">
       <ColNames>stadium_id</ColNames>
-      <ColumnCollations></ColumnCollations>
-    </index>
-    <key id="70" parent="9">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="71" parent="9">
-      <ColNames>covering_id</ColNames>
-      <RefTableName>TennisUz_covering</RefTableName>
-      <RefColNames>id</RefColNames>
-      <Deferrable>1</Deferrable>
-      <InitiallyDeferred>1</InitiallyDeferred>
-    </foreign-key>
-    <foreign-key id="72" parent="9">
-      <ColNames>stadium_id</ColNames>
-      <RefTableName>TennisUz_stadium</RefTableName>
-      <RefColNames>id</RefColNames>
-      <Deferrable>1</Deferrable>
-      <InitiallyDeferred>1</InitiallyDeferred>
-    </foreign-key>
-    <column id="73" parent="10" name="id">
-      <Position>1</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-    </column>
-    <column id="74" parent="10" name="name">
-      <Position>2</Position>
-      <DataType>varchar(200)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <key id="75" parent="10">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="76" parent="11" name="id">
-      <Position>1</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-    </column>
-    <column id="77" parent="11" name="is_winner">
-      <Position>2</Position>
-      <DataType>bool|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="78" parent="11" name="winner">
-      <Position>3</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="79" parent="11" name="set_id">
-      <Position>4</Position>
-      <DataType>integer|0s</DataType>
-    </column>
-    <index id="80" parent="11" name="TennisUz_game_set_id_7c6ce75e">
-      <ColNames>set_id</ColNames>
-      <ColumnCollations></ColumnCollations>
-    </index>
-    <key id="81" parent="11">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="82" parent="11">
-      <ColNames>set_id</ColNames>
-      <RefTableName>TennisUz_set</RefTableName>
-      <RefColNames>id</RefColNames>
-      <Deferrable>1</Deferrable>
-      <InitiallyDeferred>1</InitiallyDeferred>
-    </foreign-key>
-    <column id="83" parent="12" name="id">
-      <Position>1</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-    </column>
-    <column id="84" parent="12" name="dt">
-      <Position>2</Position>
-      <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="85" parent="12" name="winner">
-      <Position>3</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="86" parent="12" name="player">
-      <Position>4</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="87" parent="12" name="game_id">
-      <Position>5</Position>
-      <DataType>integer|0s</DataType>
-    </column>
-    <column id="88" parent="12" name="place_court_id">
-      <Position>6</Position>
-      <DataType>integer|0s</DataType>
-    </column>
-    <column id="89" parent="12" name="shot_hand_id">
-      <Position>7</Position>
-      <DataType>integer|0s</DataType>
-    </column>
-    <column id="90" parent="12" name="shot_type_id">
-      <Position>8</Position>
-      <DataType>integer|0s</DataType>
-    </column>
-    <column id="91" parent="12" name="winner_type_id">
-      <Position>9</Position>
-      <DataType>integer|0s</DataType>
-    </column>
-    <index id="92" parent="12" name="TennisUz_game_log_game_id_2dd41dae">
-      <ColNames>game_id</ColNames>
-      <ColumnCollations></ColumnCollations>
-    </index>
-    <index id="93" parent="12" name="TennisUz_game_log_place_court_id_4b2090b4">
-      <ColNames>place_court_id</ColNames>
-      <ColumnCollations></ColumnCollations>
-    </index>
-    <index id="94" parent="12" name="TennisUz_game_log_shot_hand_id_02a3815b">
-      <ColNames>shot_hand_id</ColNames>
-      <ColumnCollations></ColumnCollations>
-    </index>
-    <index id="95" parent="12" name="TennisUz_game_log_shot_type_id_274e1fca">
-      <ColNames>shot_type_id</ColNames>
-      <ColumnCollations></ColumnCollations>
-    </index>
-    <index id="96" parent="12" name="TennisUz_game_log_winner_type_id_7d9b90c1">
-      <ColNames>winner_type_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
     <key id="97" parent="12">
@@ -315,1205 +280,1651 @@
       <Primary>1</Primary>
     </key>
     <foreign-key id="98" parent="12">
+      <ColNames>covering_id</ColNames>
+      <RefTableName>TennisUz_covering</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="99" parent="12">
+      <ColNames>stadium_id</ColNames>
+      <RefTableName>TennisUz_stadium</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="100" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="101" parent="13" name="name">
+      <Position>2</Position>
+      <DataType>varchar(200)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="102" parent="13">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="103" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="104" parent="14" name="is_winner">
+      <Position>2</Position>
+      <DataType>bool|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="105" parent="14" name="winner">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="106" parent="14" name="set_id">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="107" parent="14" name="nn">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="108" parent="14" name="TennisUz_game_set_id_7c6ce75e">
+      <ColNames>set_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="109" parent="14">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="110" parent="14">
+      <ColNames>set_id</ColNames>
+      <RefTableName>TennisUz_set</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="111" parent="15" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="112" parent="15" name="winner">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="113" parent="15" name="player">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="114" parent="15" name="game_id">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="115" parent="15" name="place_court_id">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="116" parent="15" name="shot_hand_id">
+      <Position>6</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="117" parent="15" name="shot_type_id">
+      <Position>7</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="118" parent="15" name="winner_type_id">
+      <Position>8</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="119" parent="15" name="dt">
+      <Position>9</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="120" parent="15" name="TennisUz_game_log_game_id_2dd41dae">
+      <ColNames>game_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="121" parent="15" name="TennisUz_game_log_place_court_id_4b2090b4">
+      <ColNames>place_court_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="122" parent="15" name="TennisUz_game_log_shot_hand_id_02a3815b">
+      <ColNames>shot_hand_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="123" parent="15" name="TennisUz_game_log_shot_type_id_274e1fca">
+      <ColNames>shot_type_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="124" parent="15" name="TennisUz_game_log_winner_type_id_7d9b90c1">
+      <ColNames>winner_type_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="125" parent="15">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="126" parent="15">
       <ColNames>game_id</ColNames>
       <RefTableName>TennisUz_game</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <foreign-key id="99" parent="12">
+    <foreign-key id="127" parent="15">
       <ColNames>place_court_id</ColNames>
       <RefTableName>TennisUz_place_court</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <foreign-key id="100" parent="12">
+    <foreign-key id="128" parent="15">
       <ColNames>shot_hand_id</ColNames>
       <RefTableName>TennisUz_shot_hand</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <foreign-key id="101" parent="12">
+    <foreign-key id="129" parent="15">
       <ColNames>shot_type_id</ColNames>
       <RefTableName>TennisUz_shot_type</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <foreign-key id="102" parent="12">
+    <foreign-key id="130" parent="15">
       <ColNames>winner_type_id</ColNames>
       <RefTableName>TennisUz_winner_type</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <column id="103" parent="13" name="id">
+    <column id="131" parent="16" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="104" parent="13" name="name">
+    <column id="132" parent="16" name="name">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="105" parent="13">
+    <key id="133" parent="16">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="106" parent="14" name="id">
+    <column id="134" parent="17" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="107" parent="14" name="is_official">
+    <column id="135" parent="17" name="is_official">
       <Position>2</Position>
       <DataType>bool|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="108" parent="14" name="s1">
+    <column id="136" parent="17" name="s1">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="109" parent="14" name="s2">
+    <column id="137" parent="17" name="s2">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="110" parent="14" name="g1">
+    <column id="138" parent="17" name="g1">
       <Position>5</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="111" parent="14" name="g2">
+    <column id="139" parent="17" name="g2">
       <Position>6</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="112" parent="14" name="is_winner">
+    <column id="140" parent="17" name="is_winner">
       <Position>7</Position>
       <DataType>bool|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="113" parent="14" name="winner">
+    <column id="141" parent="17" name="winner">
       <Position>8</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="114" parent="14" name="court_id">
+    <column id="142" parent="17" name="court_id">
       <Position>9</Position>
       <DataType>integer|0s</DataType>
     </column>
-    <column id="115" parent="14" name="game_type_id">
+    <column id="143" parent="17" name="game_type_id">
       <Position>10</Position>
       <DataType>integer|0s</DataType>
     </column>
-    <column id="116" parent="14" name="player1_id">
+    <column id="144" parent="17" name="player1_id">
       <Position>11</Position>
       <DataType>integer|0s</DataType>
     </column>
-    <column id="117" parent="14" name="player2_id">
+    <column id="145" parent="17" name="player2_id">
       <Position>12</Position>
       <DataType>integer|0s</DataType>
     </column>
-    <column id="118" parent="14" name="player3_id">
+    <column id="146" parent="17" name="player3_id">
       <Position>13</Position>
       <DataType>integer|0s</DataType>
     </column>
-    <column id="119" parent="14" name="player4_id">
+    <column id="147" parent="17" name="player4_id">
       <Position>14</Position>
       <DataType>integer|0s</DataType>
     </column>
-    <index id="120" parent="14" name="TennisUz_match_court_id_0e1d1cbb">
+    <column id="148" parent="17" name="dt">
+      <Position>15</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <index id="149" parent="17" name="TennisUz_match_court_id_0e1d1cbb">
       <ColNames>court_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <index id="121" parent="14" name="TennisUz_match_game_type_id_a5cea11d">
+    <index id="150" parent="17" name="TennisUz_match_game_type_id_a5cea11d">
       <ColNames>game_type_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <index id="122" parent="14" name="TennisUz_match_player1_id_b1b346c2">
+    <index id="151" parent="17" name="TennisUz_match_player1_id_b1b346c2">
       <ColNames>player1_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <index id="123" parent="14" name="TennisUz_match_player2_id_99812aa0">
+    <index id="152" parent="17" name="TennisUz_match_player2_id_99812aa0">
       <ColNames>player2_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <index id="124" parent="14" name="TennisUz_match_player3_id_864c6367">
+    <index id="153" parent="17" name="TennisUz_match_player3_id_864c6367">
       <ColNames>player3_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <index id="125" parent="14" name="TennisUz_match_player4_id_d31e2f41">
+    <index id="154" parent="17" name="TennisUz_match_player4_id_d31e2f41">
       <ColNames>player4_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="126" parent="14">
+    <key id="155" parent="17">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="127" parent="14">
+    <foreign-key id="156" parent="17">
       <ColNames>court_id</ColNames>
       <RefTableName>TennisUz_court</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <foreign-key id="128" parent="14">
+    <foreign-key id="157" parent="17">
       <ColNames>game_type_id</ColNames>
       <RefTableName>TennisUz_match_type</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <foreign-key id="129" parent="14">
+    <foreign-key id="158" parent="17">
       <ColNames>player1_id</ColNames>
       <RefTableName>TennisUz_player</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <foreign-key id="130" parent="14">
+    <foreign-key id="159" parent="17">
       <ColNames>player2_id</ColNames>
       <RefTableName>TennisUz_player</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <foreign-key id="131" parent="14">
+    <foreign-key id="160" parent="17">
       <ColNames>player3_id</ColNames>
       <RefTableName>TennisUz_player</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <foreign-key id="132" parent="14">
+    <foreign-key id="161" parent="17">
       <ColNames>player4_id</ColNames>
       <RefTableName>TennisUz_player</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <column id="133" parent="15" name="id">
+    <column id="162" parent="18" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="134" parent="15" name="name">
+    <column id="163" parent="18" name="name">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="135" parent="15" name="n_player">
+    <column id="164" parent="18" name="n_player">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="136" parent="15">
+    <key id="165" parent="18">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="137" parent="16" name="id">
+    <column id="166" parent="19" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="138" parent="16" name="first_name">
+    <column id="167" parent="19" name="img">
       <Position>2</Position>
-      <DataType>varchar(50)|0s</DataType>
+      <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="139" parent="16" name="last_name">
+    <column id="168" parent="19" name="tag_id">
       <Position>3</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>varchar(200)|0s</DataType>
     </column>
-    <column id="140" parent="16" name="d_birth">
+    <column id="169" parent="19" name="dt">
       <Position>4</Position>
-      <DataType>date|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>datetime|0s</DataType>
     </column>
-    <column id="141" parent="16" name="city_id">
-      <Position>5</Position>
-      <DataType>integer|0s</DataType>
-    </column>
-    <index id="142" parent="16" name="TennisUz_person_city_id_53612073">
-      <ColNames>city_id</ColNames>
+    <index id="170" parent="19" name="TennisUz_myimage_tag_id_c15a15f7">
+      <ColNames>tag_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="143" parent="16">
+    <key id="171" parent="19">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="144" parent="16">
-      <ColNames>city_id</ColNames>
-      <RefTableName>TennisUz_city</RefTableName>
-      <RefColNames>id</RefColNames>
+    <foreign-key id="172" parent="19">
+      <ColNames>tag_id</ColNames>
+      <RefTableName>TennisUz_tag</RefTableName>
+      <RefColNames>name</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <column id="145" parent="17" name="id">
+    <column id="173" parent="20" name="pub_date">
       <Position>1</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-    </column>
-    <column id="146" parent="17" name="name">
-      <Position>2</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <key id="147" parent="17">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="148" parent="18" name="id">
-      <Position>1</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-    </column>
-    <column id="149" parent="18" name="is_profy">
-      <Position>2</Position>
-      <DataType>bool|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="150" parent="18" name="d_start">
-      <Position>3</Position>
-      <DataType>date|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="151" parent="18" name="racket">
-      <Position>4</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="152" parent="18" name="strings">
-      <Position>5</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="153" parent="18" name="shoes">
-      <Position>6</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="154" parent="18" name="balls">
-      <Position>7</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="155" parent="18" name="atp_players">
-      <Position>8</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="156" parent="18" name="backhand_id">
-      <Position>9</Position>
-      <DataType>integer|0s</DataType>
-    </column>
-    <column id="157" parent="18" name="hand_id">
-      <Position>10</Position>
-      <DataType>integer|0s</DataType>
-    </column>
-    <column id="158" parent="18" name="person_id">
-      <Position>11</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="159" parent="18" name="sqlite_autoindex_TennisUz_player_1">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>person_id</ColNames>
-      <ColumnCollations></ColumnCollations>
-      <Unique>1</Unique>
-    </index>
-    <index id="160" parent="18" name="TennisUz_player_backhand_id_c22ac8f1">
-      <ColNames>backhand_id</ColNames>
-      <ColumnCollations></ColumnCollations>
-    </index>
-    <index id="161" parent="18" name="TennisUz_player_hand_id_8af63558">
-      <ColNames>hand_id</ColNames>
-      <ColumnCollations></ColumnCollations>
-    </index>
-    <key id="162" parent="18">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <key id="163" parent="18">
-      <ColNames>person_id</ColNames>
-      <UnderlyingIndexName>sqlite_autoindex_TennisUz_player_1</UnderlyingIndexName>
-    </key>
-    <foreign-key id="164" parent="18">
-      <ColNames>backhand_id</ColNames>
-      <RefTableName>TennisUz_backhand</RefTableName>
-      <RefColNames>id</RefColNames>
-      <Deferrable>1</Deferrable>
-      <InitiallyDeferred>1</InitiallyDeferred>
-    </foreign-key>
-    <foreign-key id="165" parent="18">
-      <ColNames>hand_id</ColNames>
-      <RefTableName>TennisUz_hand</RefTableName>
-      <RefColNames>id</RefColNames>
-      <Deferrable>1</Deferrable>
-      <InitiallyDeferred>1</InitiallyDeferred>
-    </foreign-key>
-    <foreign-key id="166" parent="18">
-      <ColNames>person_id</ColNames>
-      <RefTableName>TennisUz_person</RefTableName>
-      <RefColNames>id</RefColNames>
-      <Deferrable>1</Deferrable>
-      <InitiallyDeferred>1</InitiallyDeferred>
-    </foreign-key>
-    <column id="167" parent="19" name="id">
-      <Position>1</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-    </column>
-    <column id="168" parent="19" name="dt">
-      <Position>2</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="169" parent="19" name="delta_rahk">
-      <Position>3</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="170" parent="19" name="delta_rahk_doubles">
-      <Position>4</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="171" parent="19" name="match_id">
-      <Position>5</Position>
-      <DataType>integer|0s</DataType>
-    </column>
-    <column id="172" parent="19" name="player_id">
-      <Position>6</Position>
-      <DataType>integer|0s</DataType>
-    </column>
-    <index id="173" parent="19" name="TennisUz_player_rank_match_id_4d29a162">
-      <ColNames>match_id</ColNames>
-      <ColumnCollations></ColumnCollations>
-    </index>
-    <index id="174" parent="19" name="TennisUz_player_rank_player_id_4fb68660">
-      <ColNames>player_id</ColNames>
-      <ColumnCollations></ColumnCollations>
-    </index>
-    <key id="175" parent="19">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="176" parent="19">
-      <ColNames>match_id</ColNames>
-      <RefTableName>TennisUz_match</RefTableName>
-      <RefColNames>id</RefColNames>
-      <Deferrable>1</Deferrable>
-      <InitiallyDeferred>1</InitiallyDeferred>
-    </foreign-key>
-    <foreign-key id="177" parent="19">
-      <ColNames>player_id</ColNames>
-      <RefTableName>TennisUz_player</RefTableName>
-      <RefColNames>id</RefColNames>
-      <Deferrable>1</Deferrable>
-      <InitiallyDeferred>1</InitiallyDeferred>
-    </foreign-key>
-    <column id="178" parent="20" name="id">
-      <Position>1</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-    </column>
-    <column id="179" parent="20" name="question_text">
+    <column id="174" parent="20" name="caption">
       <Position>2</Position>
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="180" parent="20" name="pub_date">
-      <Position>3</Position>
-      <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <key id="181" parent="20">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="182" parent="21" name="id">
-      <Position>1</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-    </column>
-    <column id="183" parent="21" name="name">
-      <Position>2</Position>
-      <DataType>varchar(200)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="184" parent="21" name="code">
-      <Position>3</Position>
-      <DataType>varchar(3)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <key id="185" parent="21">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="186" parent="22" name="id">
-      <Position>1</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-    </column>
-    <column id="187" parent="22" name="g1">
-      <Position>2</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="188" parent="22" name="g2">
-      <Position>3</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="189" parent="22" name="is_tiebreak">
-      <Position>4</Position>
-      <DataType>bool|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="190" parent="22" name="tb1">
-      <Position>5</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="191" parent="22" name="tb2">
-      <Position>6</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="192" parent="22" name="is_winner">
-      <Position>7</Position>
-      <DataType>bool|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="193" parent="22" name="winner">
-      <Position>8</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="194" parent="22" name="match_id">
-      <Position>9</Position>
-      <DataType>integer|0s</DataType>
-    </column>
-    <index id="195" parent="22" name="TennisUz_set_match_id_6ccd7f99">
-      <ColNames>match_id</ColNames>
-      <ColumnCollations></ColumnCollations>
-    </index>
-    <key id="196" parent="22">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="197" parent="22">
-      <ColNames>match_id</ColNames>
-      <RefTableName>TennisUz_match</RefTableName>
-      <RefColNames>id</RefColNames>
-      <Deferrable>1</Deferrable>
-      <InitiallyDeferred>1</InitiallyDeferred>
-    </foreign-key>
-    <column id="198" parent="23" name="id">
-      <Position>1</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-    </column>
-    <column id="199" parent="23" name="name">
-      <Position>2</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <key id="200" parent="23">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="201" parent="24" name="id">
-      <Position>1</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-    </column>
-    <column id="202" parent="24" name="name">
-      <Position>2</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <key id="203" parent="24">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="204" parent="25" name="id">
-      <Position>1</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-    </column>
-    <column id="205" parent="25" name="name">
-      <Position>2</Position>
-      <DataType>varchar(200)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="206" parent="25" name="address">
-      <Position>3</Position>
-      <DataType>varchar(1000)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="207" parent="25" name="t_open">
-      <Position>4</Position>
-      <DataType>time|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="208" parent="25" name="t_close">
-      <Position>5</Position>
-      <DataType>time|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="209" parent="25" name="act">
-      <Position>6</Position>
-      <DataType>bool|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="210" parent="25" name="city_id">
-      <Position>7</Position>
-      <DataType>integer|0s</DataType>
-    </column>
-    <index id="211" parent="25" name="TennisUz_stadium_city_id_aef9d5fb">
-      <ColNames>city_id</ColNames>
-      <ColumnCollations></ColumnCollations>
-    </index>
-    <key id="212" parent="25">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="213" parent="25">
-      <ColNames>city_id</ColNames>
-      <RefTableName>TennisUz_city</RefTableName>
-      <RefColNames>id</RefColNames>
-      <Deferrable>1</Deferrable>
-      <InitiallyDeferred>1</InitiallyDeferred>
-    </foreign-key>
-    <column id="214" parent="26" name="id">
-      <Position>1</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-    </column>
-    <column id="215" parent="26" name="name">
-      <Position>2</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <key id="216" parent="26">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="217" parent="27" name="id">
-      <Position>1</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-    </column>
-    <column id="218" parent="27" name="player_id">
-      <Position>2</Position>
-      <DataType>integer|0s</DataType>
-    </column>
-    <column id="219" parent="27" name="tourney_group_id">
-      <Position>3</Position>
-      <DataType>integer|0s</DataType>
-    </column>
-    <index id="220" parent="27" name="TennisUz_torney_group_player_player_id_d5efb64a">
-      <ColNames>player_id</ColNames>
-      <ColumnCollations></ColumnCollations>
-    </index>
-    <index id="221" parent="27" name="TennisUz_torney_group_player_tourney_group_id_480c92fa">
-      <ColNames>tourney_group_id</ColNames>
-      <ColumnCollations></ColumnCollations>
-    </index>
-    <key id="222" parent="27">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="223" parent="27">
-      <ColNames>player_id</ColNames>
-      <RefTableName>TennisUz_player</RefTableName>
-      <RefColNames>id</RefColNames>
-      <Deferrable>1</Deferrable>
-      <InitiallyDeferred>1</InitiallyDeferred>
-    </foreign-key>
-    <foreign-key id="224" parent="27">
-      <ColNames>tourney_group_id</ColNames>
-      <RefTableName>TennisUz_tourney_group</RefTableName>
-      <RefColNames>id</RefColNames>
-      <Deferrable>1</Deferrable>
-      <InitiallyDeferred>1</InitiallyDeferred>
-    </foreign-key>
-    <column id="225" parent="28" name="id">
-      <Position>1</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-    </column>
-    <column id="226" parent="28" name="name">
-      <Position>2</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="227" parent="28" name="n_playr">
-      <Position>3</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <key id="228" parent="28">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="229" parent="29" name="id">
-      <Position>1</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-    </column>
-    <column id="230" parent="29" name="name">
-      <Position>2</Position>
-      <DataType>varchar(200)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="231" parent="29" name="rules">
+    <column id="175" parent="20" name="text">
       <Position>3</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="232" parent="29" name="court_id">
+    <column id="176" parent="20" name="strong">
+      <Position>4</Position>
+      <DataType>bool|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="177" parent="20" name="foto">
+      <Position>5</Position>
+      <DataType>varchar(100)|0s</DataType>
+    </column>
+    <index id="178" parent="20" name="sqlite_autoindex_TennisUz_news_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>caption</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="179" parent="20">
+      <ColNames>caption</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_TennisUz_news_1</UnderlyingIndexName>
+    </key>
+    <column id="180" parent="21" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="181" parent="21" name="d_start">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="182" parent="21" name="d_fin">
+      <Position>3</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="183" parent="21" name="court_id">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
     </column>
-    <index id="233" parent="29" name="TennisUz_tourney_court_id_526bf757">
+    <column id="184" parent="21" name="player_id">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <index id="185" parent="21" name="TennisUz_order_court_court_id_5df06559">
       <ColNames>court_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="234" parent="29">
+    <index id="186" parent="21" name="TennisUz_order_court_player_id_57bcf3ce">
+      <ColNames>player_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="187" parent="21">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="235" parent="29">
+    <foreign-key id="188" parent="21">
       <ColNames>court_id</ColNames>
       <RefTableName>TennisUz_court</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <column id="236" parent="30" name="id">
+    <foreign-key id="189" parent="21">
+      <ColNames>player_id</ColNames>
+      <RefTableName>TennisUz_player</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="190" parent="22" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="237" parent="30" name="name">
+    <column id="191" parent="22" name="first_name">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="238" parent="30" name="tourney_id">
+    <column id="192" parent="22" name="last_name">
       <Position>3</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="193" parent="22" name="city_id">
+      <Position>4</Position>
       <DataType>integer|0s</DataType>
     </column>
-    <index id="239" parent="30" name="TennisUz_tourney_group_tourney_id_b6dbae0b">
-      <ColNames>tourney_id</ColNames>
+    <column id="194" parent="22" name="email">
+      <Position>5</Position>
+      <DataType>varchar(254)|0s</DataType>
+    </column>
+    <column id="195" parent="22" name="foto">
+      <Position>6</Position>
+      <DataType>varchar(100)|0s</DataType>
+    </column>
+    <column id="196" parent="22" name="sex">
+      <Position>7</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="197" parent="22" name="d_birth">
+      <Position>8</Position>
+      <DataType>date|0s</DataType>
+    </column>
+    <index id="198" parent="22" name="TennisUz_person_city_id_53612073">
+      <ColNames>city_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="240" parent="30">
+    <key id="199" parent="22">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="241" parent="30">
+    <foreign-key id="200" parent="22">
+      <ColNames>city_id</ColNames>
+      <RefTableName>TennisUz_city</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="201" parent="23" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="202" parent="23" name="name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="203" parent="23">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="204" parent="24" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="205" parent="24" name="is_profy">
+      <Position>2</Position>
+      <DataType>bool|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="206" parent="24" name="d_start">
+      <Position>3</Position>
+      <DataType>date|0s</DataType>
+    </column>
+    <column id="207" parent="24" name="racket_id">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="208" parent="24" name="shoes_id">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="209" parent="24" name="balls_id">
+      <Position>6</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="210" parent="24" name="atp_players">
+      <Position>7</Position>
+      <DataType>varchar(50)|0s</DataType>
+    </column>
+    <column id="211" parent="24" name="backhand_id">
+      <Position>8</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="212" parent="24" name="hand_id">
+      <Position>9</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="213" parent="24" name="person_id">
+      <Position>10</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="214" parent="24" name="strings_id">
+      <Position>11</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <index id="215" parent="24" name="sqlite_autoindex_TennisUz_player_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>person_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="216" parent="24" name="TennisUz_player_racket_id_bc78a136">
+      <ColNames>racket_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="217" parent="24" name="TennisUz_player_shoes_id_f83d4a73">
+      <ColNames>shoes_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="218" parent="24" name="TennisUz_player_balls_id_6b5ad5f4">
+      <ColNames>balls_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="219" parent="24" name="TennisUz_player_backhand_id_c22ac8f1">
+      <ColNames>backhand_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="220" parent="24" name="TennisUz_player_hand_id_8af63558">
+      <ColNames>hand_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="221" parent="24" name="TennisUz_player_strings_id_6c20cd6c">
+      <ColNames>strings_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="222" parent="24">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="223" parent="24">
+      <ColNames>person_id</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_TennisUz_player_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="224" parent="24">
+      <ColNames>racket_id</ColNames>
+      <RefTableName>TennisUz_rackets</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="225" parent="24">
+      <ColNames>shoes_id</ColNames>
+      <RefTableName>TennisUz_shoes</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="226" parent="24">
+      <ColNames>balls_id</ColNames>
+      <RefTableName>TennisUz_balls</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="227" parent="24">
+      <ColNames>backhand_id</ColNames>
+      <RefTableName>TennisUz_backhand</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="228" parent="24">
+      <ColNames>hand_id</ColNames>
+      <RefTableName>TennisUz_hand</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="229" parent="24">
+      <ColNames>person_id</ColNames>
+      <RefTableName>TennisUz_person</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="230" parent="24">
+      <ColNames>strings_id</ColNames>
+      <RefTableName>TennisUz_strings</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="231" parent="25" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="232" parent="25" name="delta_rahk">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="233" parent="25" name="delta_rahk_doubles">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="234" parent="25" name="match_id">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="235" parent="25" name="player_id">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="236" parent="25" name="dt">
+      <Position>6</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="237" parent="25" name="TennisUz_player_rank_match_id_4d29a162">
+      <ColNames>match_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="238" parent="25" name="TennisUz_player_rank_player_id_4fb68660">
+      <ColNames>player_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="239" parent="25">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="240" parent="25">
+      <ColNames>match_id</ColNames>
+      <RefTableName>TennisUz_match</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="241" parent="25">
+      <ColNames>player_id</ColNames>
+      <RefTableName>TennisUz_player</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="242" parent="26" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="243" parent="26" name="question_text">
+      <Position>2</Position>
+      <DataType>varchar(200)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="244" parent="26" name="pub_date">
+      <Position>3</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="245" parent="26">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="246" parent="27" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="247" parent="27" name="name">
+      <Position>2</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="248" parent="27" name="brand_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <index id="249" parent="27" name="TennisUz_rackets_brand_id_0ee57fc0">
+      <ColNames>brand_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="250" parent="27">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="251" parent="27">
+      <ColNames>brand_id</ColNames>
+      <RefTableName>TennisUz_brands</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="252" parent="28" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="253" parent="28" name="name">
+      <Position>2</Position>
+      <DataType>varchar(200)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="254" parent="28" name="code">
+      <Position>3</Position>
+      <DataType>varchar(3)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="255" parent="28">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="256" parent="29" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="257" parent="29" name="g1">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="258" parent="29" name="g2">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="259" parent="29" name="tb1">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="260" parent="29" name="tb2">
+      <Position>5</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="261" parent="29" name="is_winner">
+      <Position>6</Position>
+      <DataType>bool|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="262" parent="29" name="winner">
+      <Position>7</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="263" parent="29" name="match_id">
+      <Position>8</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="264" parent="29" name="nn">
+      <Position>9</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="265" parent="29" name="dt">
+      <Position>10</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <column id="266" parent="29" name="is_tiebreak">
+      <Position>11</Position>
+      <DataType>bool|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="267" parent="29" name="TennisUz_set_match_id_6ccd7f99">
+      <ColNames>match_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="268" parent="29">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="269" parent="29">
+      <ColNames>match_id</ColNames>
+      <RefTableName>TennisUz_match</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="270" parent="30" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="271" parent="30" name="brand_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="272" parent="30" name="name">
+      <Position>3</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="273" parent="30" name="TennisUz_shoes_brand_id_73ae048e">
+      <ColNames>brand_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="274" parent="30">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="275" parent="30">
+      <ColNames>brand_id</ColNames>
+      <RefTableName>TennisUz_brands</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="276" parent="31" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="277" parent="31" name="name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="278" parent="31">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="279" parent="32" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="280" parent="32" name="name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="281" parent="32">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="282" parent="33" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="283" parent="33" name="name">
+      <Position>2</Position>
+      <DataType>varchar(200)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="284" parent="33" name="address">
+      <Position>3</Position>
+      <DataType>varchar(1000)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="285" parent="33" name="t_open">
+      <Position>4</Position>
+      <DataType>time|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="286" parent="33" name="t_close">
+      <Position>5</Position>
+      <DataType>time|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="287" parent="33" name="act">
+      <Position>6</Position>
+      <DataType>bool|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="288" parent="33" name="city_id">
+      <Position>7</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <index id="289" parent="33" name="TennisUz_stadium_city_id_aef9d5fb">
+      <ColNames>city_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="290" parent="33">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="291" parent="33">
+      <ColNames>city_id</ColNames>
+      <RefTableName>TennisUz_city</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="292" parent="34" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="293" parent="34" name="name">
+      <Position>2</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="294" parent="34" name="brand_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <index id="295" parent="34" name="TennisUz_strings_brand_id_054f3f4b">
+      <ColNames>brand_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="296" parent="34">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="297" parent="34">
+      <ColNames>brand_id</ColNames>
+      <RefTableName>TennisUz_brands</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="298" parent="35" name="name">
+      <Position>1</Position>
+      <DataType>varchar(200)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="299" parent="35" name="sqlite_autoindex_TennisUz_tag_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>name</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="300" parent="35">
+      <ColNames>name</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_TennisUz_tag_1</UnderlyingIndexName>
+    </key>
+    <column id="301" parent="36" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="302" parent="36" name="name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="303" parent="36">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="304" parent="37" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="305" parent="37" name="player_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="306" parent="37" name="tourney_group_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="307" parent="37" name="nn">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="308" parent="37" name="TennisUz_torney_group_player_player_id_d5efb64a">
+      <ColNames>player_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="309" parent="37" name="TennisUz_torney_group_player_tourney_group_id_480c92fa">
+      <ColNames>tourney_group_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="310" parent="37">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="311" parent="37">
+      <ColNames>player_id</ColNames>
+      <RefTableName>TennisUz_player</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="312" parent="37">
+      <ColNames>tourney_group_id</ColNames>
+      <RefTableName>TennisUz_tourney_group</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="313" parent="38" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="314" parent="38" name="name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="315" parent="38" name="n_playr">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="316" parent="38">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="317" parent="39" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="318" parent="39" name="name">
+      <Position>2</Position>
+      <DataType>varchar(200)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="319" parent="39" name="rules">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="320" parent="39" name="court_id">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="321" parent="39" name="dt">
+      <Position>5</Position>
+      <DataType>date|0s</DataType>
+    </column>
+    <column id="322" parent="39" name="stadium_id">
+      <Position>6</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <index id="323" parent="39" name="TennisUz_tourney_court_id_526bf757">
+      <ColNames>court_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="324" parent="39" name="TennisUz_tourney_stadium_id_8de5f945">
+      <ColNames>stadium_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="325" parent="39">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="326" parent="39">
+      <ColNames>court_id</ColNames>
+      <RefTableName>TennisUz_court</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="327" parent="39">
+      <ColNames>stadium_id</ColNames>
+      <RefTableName>TennisUz_stadium</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="328" parent="40" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="329" parent="40" name="name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="330" parent="40" name="tourney_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <index id="331" parent="40" name="TennisUz_tourney_group_tourney_id_b6dbae0b">
+      <ColNames>tourney_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="332" parent="40">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="333" parent="40">
       <ColNames>tourney_id</ColNames>
       <RefTableName>TennisUz_tourney</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <column id="242" parent="31" name="id">
+    <column id="334" parent="41" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="243" parent="31" name="name">
+    <column id="335" parent="41" name="name">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="244" parent="31">
+    <key id="336" parent="41">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="245" parent="32" name="id">
+    <column id="337" parent="42" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="246" parent="32" name="name">
+    <column id="338" parent="42" name="name">
       <Position>2</Position>
       <DataType>varchar(150)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="247" parent="32" name="sqlite_autoindex_auth_group_1">
+    <index id="339" parent="42" name="sqlite_autoindex_auth_group_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>name</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="248" parent="32">
+    <key id="340" parent="42">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="249" parent="32">
+    <key id="341" parent="42">
       <ColNames>name</ColNames>
       <UnderlyingIndexName>sqlite_autoindex_auth_group_1</UnderlyingIndexName>
     </key>
-    <column id="250" parent="33" name="id">
+    <column id="342" parent="43" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="251" parent="33" name="group_id">
+    <column id="343" parent="43" name="group_id">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="252" parent="33" name="permission_id">
+    <column id="344" parent="43" name="permission_id">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="253" parent="33" name="auth_group_permissions_group_id_permission_id_0cd325b0_uniq">
+    <index id="345" parent="43" name="auth_group_permissions_group_id_permission_id_0cd325b0_uniq">
       <ColNames>group_id
 permission_id</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <index id="254" parent="33" name="auth_group_permissions_group_id_b120cbf9">
+    <index id="346" parent="43" name="auth_group_permissions_group_id_b120cbf9">
       <ColNames>group_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <index id="255" parent="33" name="auth_group_permissions_permission_id_84c5c92e">
+    <index id="347" parent="43" name="auth_group_permissions_permission_id_84c5c92e">
       <ColNames>permission_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="256" parent="33">
+    <key id="348" parent="43">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="257" parent="33">
+    <foreign-key id="349" parent="43">
       <ColNames>group_id</ColNames>
       <RefTableName>auth_group</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <foreign-key id="258" parent="33">
+    <foreign-key id="350" parent="43">
       <ColNames>permission_id</ColNames>
       <RefTableName>auth_permission</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <column id="259" parent="34" name="id">
+    <column id="351" parent="44" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="260" parent="34" name="content_type_id">
+    <column id="352" parent="44" name="content_type_id">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="261" parent="34" name="codename">
+    <column id="353" parent="44" name="codename">
       <Position>3</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="262" parent="34" name="name">
+    <column id="354" parent="44" name="name">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="263" parent="34" name="auth_permission_content_type_id_codename_01ab375a_uniq">
+    <index id="355" parent="44" name="auth_permission_content_type_id_codename_01ab375a_uniq">
       <ColNames>content_type_id
 codename</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <index id="264" parent="34" name="auth_permission_content_type_id_2f476e4b">
+    <index id="356" parent="44" name="auth_permission_content_type_id_2f476e4b">
       <ColNames>content_type_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="265" parent="34">
+    <key id="357" parent="44">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="266" parent="34">
+    <foreign-key id="358" parent="44">
       <ColNames>content_type_id</ColNames>
       <RefTableName>django_content_type</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <column id="267" parent="35" name="id">
+    <column id="359" parent="45" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="268" parent="35" name="password">
+    <column id="360" parent="45" name="password">
       <Position>2</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="269" parent="35" name="last_login">
+    <column id="361" parent="45" name="last_login">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="270" parent="35" name="is_superuser">
+    <column id="362" parent="45" name="is_superuser">
       <Position>4</Position>
       <DataType>bool|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="271" parent="35" name="username">
+    <column id="363" parent="45" name="username">
       <Position>5</Position>
       <DataType>varchar(150)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="272" parent="35" name="first_name">
+    <column id="364" parent="45" name="first_name">
       <Position>6</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="273" parent="35" name="email">
+    <column id="365" parent="45" name="email">
       <Position>7</Position>
       <DataType>varchar(254)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="274" parent="35" name="is_staff">
+    <column id="366" parent="45" name="is_staff">
       <Position>8</Position>
       <DataType>bool|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="275" parent="35" name="is_active">
+    <column id="367" parent="45" name="is_active">
       <Position>9</Position>
       <DataType>bool|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="276" parent="35" name="date_joined">
+    <column id="368" parent="45" name="date_joined">
       <Position>10</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="277" parent="35" name="last_name">
+    <column id="369" parent="45" name="last_name">
       <Position>11</Position>
       <DataType>varchar(150)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="278" parent="35" name="sqlite_autoindex_auth_user_1">
+    <index id="370" parent="45" name="sqlite_autoindex_auth_user_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>username</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="279" parent="35">
+    <key id="371" parent="45">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="280" parent="35">
+    <key id="372" parent="45">
       <ColNames>username</ColNames>
       <UnderlyingIndexName>sqlite_autoindex_auth_user_1</UnderlyingIndexName>
     </key>
-    <column id="281" parent="36" name="id">
+    <column id="373" parent="46" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="282" parent="36" name="user_id">
+    <column id="374" parent="46" name="user_id">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="283" parent="36" name="group_id">
+    <column id="375" parent="46" name="group_id">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="284" parent="36" name="auth_user_groups_user_id_group_id_94350c0c_uniq">
+    <index id="376" parent="46" name="auth_user_groups_user_id_group_id_94350c0c_uniq">
       <ColNames>user_id
 group_id</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <index id="285" parent="36" name="auth_user_groups_user_id_6a12ed8b">
+    <index id="377" parent="46" name="auth_user_groups_user_id_6a12ed8b">
       <ColNames>user_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <index id="286" parent="36" name="auth_user_groups_group_id_97559544">
+    <index id="378" parent="46" name="auth_user_groups_group_id_97559544">
       <ColNames>group_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="287" parent="36">
+    <key id="379" parent="46">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="288" parent="36">
+    <foreign-key id="380" parent="46">
       <ColNames>user_id</ColNames>
       <RefTableName>auth_user</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <foreign-key id="289" parent="36">
+    <foreign-key id="381" parent="46">
       <ColNames>group_id</ColNames>
       <RefTableName>auth_group</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <column id="290" parent="37" name="id">
+    <column id="382" parent="47" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="291" parent="37" name="user_id">
+    <column id="383" parent="47" name="user_id">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="292" parent="37" name="permission_id">
+    <column id="384" parent="47" name="permission_id">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="293" parent="37" name="auth_user_user_permissions_user_id_permission_id_14a6b632_uniq">
+    <index id="385" parent="47" name="auth_user_user_permissions_user_id_permission_id_14a6b632_uniq">
       <ColNames>user_id
 permission_id</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <index id="294" parent="37" name="auth_user_user_permissions_user_id_a95ead1b">
+    <index id="386" parent="47" name="auth_user_user_permissions_user_id_a95ead1b">
       <ColNames>user_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <index id="295" parent="37" name="auth_user_user_permissions_permission_id_1fbb5f2c">
+    <index id="387" parent="47" name="auth_user_user_permissions_permission_id_1fbb5f2c">
       <ColNames>permission_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="296" parent="37">
+    <key id="388" parent="47">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="297" parent="37">
+    <foreign-key id="389" parent="47">
       <ColNames>user_id</ColNames>
       <RefTableName>auth_user</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <foreign-key id="298" parent="37">
+    <foreign-key id="390" parent="47">
       <ColNames>permission_id</ColNames>
       <RefTableName>auth_permission</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <column id="299" parent="38" name="id">
+    <column id="391" parent="48" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="300" parent="38" name="action_time">
+    <column id="392" parent="48" name="action_time">
       <Position>2</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="301" parent="38" name="object_id">
+    <column id="393" parent="48" name="object_id">
       <Position>3</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="302" parent="38" name="object_repr">
+    <column id="394" parent="48" name="object_repr">
       <Position>4</Position>
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="303" parent="38" name="change_message">
+    <column id="395" parent="48" name="change_message">
       <Position>5</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="304" parent="38" name="content_type_id">
+    <column id="396" parent="48" name="content_type_id">
       <Position>6</Position>
       <DataType>integer|0s</DataType>
     </column>
-    <column id="305" parent="38" name="user_id">
+    <column id="397" parent="48" name="user_id">
       <Position>7</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="306" parent="38" name="action_flag">
+    <column id="398" parent="48" name="action_flag">
       <Position>8</Position>
       <DataType>smallint unsigned|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="307" parent="38" name="django_admin_log_content_type_id_c4bce8eb">
+    <index id="399" parent="48" name="django_admin_log_content_type_id_c4bce8eb">
       <ColNames>content_type_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <index id="308" parent="38" name="django_admin_log_user_id_c564eba6">
+    <index id="400" parent="48" name="django_admin_log_user_id_c564eba6">
       <ColNames>user_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="309" parent="38">
+    <key id="401" parent="48">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="310" parent="38">
+    <foreign-key id="402" parent="48">
       <ColNames>content_type_id</ColNames>
       <RefTableName>django_content_type</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <foreign-key id="311" parent="38">
+    <foreign-key id="403" parent="48">
       <ColNames>user_id</ColNames>
       <RefTableName>auth_user</RefTableName>
       <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
-    <check id="312" parent="38">
+    <check id="404" parent="48">
       <Predicate>&quot;action_flag&quot; &gt;= 0</Predicate>
     </check>
-    <column id="313" parent="39" name="id">
+    <column id="405" parent="49" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="314" parent="39" name="app_label">
+    <column id="406" parent="49" name="app_label">
       <Position>2</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="315" parent="39" name="model">
+    <column id="407" parent="49" name="model">
       <Position>3</Position>
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="316" parent="39" name="django_content_type_app_label_model_76bd3d3b_uniq">
+    <index id="408" parent="49" name="django_content_type_app_label_model_76bd3d3b_uniq">
       <ColNames>app_label
 model</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="317" parent="39">
+    <key id="409" parent="49">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="318" parent="40" name="id">
+    <column id="410" parent="50" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="319" parent="40" name="app">
+    <column id="411" parent="50" name="app">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="320" parent="40" name="name">
+    <column id="412" parent="50" name="name">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="321" parent="40" name="applied">
+    <column id="413" parent="50" name="applied">
       <Position>4</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="322" parent="40">
+    <key id="414" parent="50">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="323" parent="41" name="session_key">
+    <column id="415" parent="51" name="session_key">
       <Position>1</Position>
       <DataType>varchar(40)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="324" parent="41" name="session_data">
+    <column id="416" parent="51" name="session_data">
       <Position>2</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="325" parent="41" name="expire_date">
+    <column id="417" parent="51" name="expire_date">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="326" parent="41" name="sqlite_autoindex_django_session_1">
+    <index id="418" parent="51" name="sqlite_autoindex_django_session_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>session_key</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <index id="327" parent="41" name="django_session_expire_date_a5c62663">
+    <index id="419" parent="51" name="django_session_expire_date_a5c62663">
       <ColNames>expire_date</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="328" parent="41">
+    <key id="420" parent="51">
       <ColNames>session_key</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>sqlite_autoindex_django_session_1</UnderlyingIndexName>
     </key>
-    <column id="329" parent="42" name="type">
+    <column id="421" parent="52" name="type">
       <Position>1</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="330" parent="42" name="name">
+    <column id="422" parent="52" name="name">
       <Position>2</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="331" parent="42" name="tbl_name">
+    <column id="423" parent="52" name="tbl_name">
       <Position>3</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="332" parent="42" name="rootpage">
+    <column id="424" parent="52" name="rootpage">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="333" parent="42" name="sql">
+    <column id="425" parent="52" name="sql">
       <Position>5</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="334" parent="43" name="name">
+    <column id="426" parent="53" name="name">
       <Position>1</Position>
     </column>
-    <column id="335" parent="43" name="seq">
+    <column id="427" parent="53" name="seq">
       <Position>2</Position>
     </column>
   </database-model>

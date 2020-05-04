@@ -28,19 +28,23 @@
  <a class="navbar-brand" href="{% url 'index' %}"> <img src="{% static 'img/2.png' %}" height="48px"> </a>
 
           <ul class="navbar-nav " >
-
+               <li class="nav-item">
+                <a class="nav-link" href="{% url 'news_index' %}">Новини</a>
+             </li>
            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle " href="#" id="navbardrop" data-toggle="dropdown">Результати</a>
+
+                <a class="nav-link dropdown-toggle " href="#" id="navbardrop" data-toggle="dropdown">Турніри</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{% url 'poll_index' %}">Архів</a>
+                        <a class="dropdown-item" href="{% url 'poll_index' %}">Весна 2020</a>
+                        <a class="dropdown-item" href="{% url 'poll_index' %}">Архів 2019</a>
 
                     </div>
              </li>
 
              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Загальні</a>
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Результати</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{% url 'poll_index' %}">Новини</a>
+                        <a class="dropdown-item" href="{% url 'poll_index' %}">Архів</a>
 
                     </div>
              </li>
@@ -48,21 +52,13 @@
                 <a class="nav-link" href="{% url 'poll_index' %}">Опитування</a>
              </li>
              <li class="nav-item">
+                <a class="nav-link" href="{% url 'poll_index' %}">Галерея</a>
+             </li>
+             <li class="nav-item">
                 <a class="nav-link" href=" http://127.0.0.1:8000/admin/">Адміністрування</a>
              </li>
 
-             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="{% url 'poll_index' %}" id="navbardrop" data-toggle="dropdown">CRM</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{% url 'poll_index' %}">Вагова система</a>
-                        {% if user.userprofile.is_graph %}<a class="dropdown-item" href="{% url 'poll_index' %}">Діаграми</a>{% endif %}
-                        <a class="dropdown-item" href="{% url 'poll_index' %}">Підрозділи</a>
-                       {% if user.userprofile.is_it_admin %}<a class="dropdown-item" href="{% url 'poll_index' %}">Співробітники</a>{% endif %}
 
-
-
-                    </div>
-             </li>
           </ul>
 
 {#<div class="collapse navbar-collapse" id="mainMenu">#}

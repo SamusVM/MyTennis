@@ -1,9 +1,12 @@
 from django.urls import path
 
 from . import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('news/', views.NewsIndexView.as_view(), name='news_index'),
     # path('poll/', views.poll_index, name='poll_index'),
     # path('poll/<int:question_id>/', views.poll_detail, name='poll_detail'),
     # # ex: /polls/5/results/
@@ -14,4 +17,4 @@ urlpatterns = [
     path('poll/<int:pk>/results/', views.PollResultsView.as_view(), name='poll_results'),
     path('poll/<int:question_id>/vote/', views.poll_vote, name='poll_vote'),
 
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

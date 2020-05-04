@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 
-from .models import Question, Choice
+from .models import Question, Choice, News
 
 
 def index(request):
@@ -23,6 +23,15 @@ class PollIndexView(generic.ListView):
     context_object_name =  'latest_question_list'
     def get_queryset(self):
         return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
+
+class NewsIndexView(generic.ListView):
+    template_name = 'news_index.html'
+    context_object_name =  'latest_news'
+    def get_queryset(self):
+        # return News.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:10]
+        return News.objects.all().order_by('-pub_date')[:10]
+
+
 
 class PollDetailView(generic.DetailView):
     model = Question
