@@ -2,7 +2,11 @@ from builtins import set
 
 from django.db import models
 from django.utils import timezone
-from  django.db.models import Sum
+from django.db.models import Sum
+from django.contrib.auth.models import User
+from django.dispatch import receiver
+from django.db.models.signals import post_save
+
 import datetime
 # Create your models here.
 class Region(models.Model):
@@ -136,6 +140,7 @@ class Court(models.Model):
     name = models.CharField(max_length=200)
     stadium = models.ForeignKey(Stadium, on_delete=models.SET_NULL, blank='TRUE', null='True')
     covering = models.ForeignKey(Covering, on_delete=models.SET_NULL, blank='TRUE', null='True')
+    nn = models.IntegerField(blank='TRUE', null='True')
     allows_doubles =  models.BooleanField(default=True)
     is_roof = models.BooleanField(default=False)
     act = models.BooleanField(default=True)
@@ -144,7 +149,12 @@ class Court(models.Model):
         verbose_name_plural = 'Корти'
         ordering = ('name',)
     def __str__(self):
-        return self.name
+        st = str(self.stadium)
+        if self.nn:
+            st+=' ('+str(self.nn)+')'
+        if self.nn ==0:
+            st = self.name
+        return st
 
 
 
@@ -156,6 +166,8 @@ class Person(models.Model):
     sex = models.CharField(max_length=50,choices=ss, default='M')
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
+    user = models.OneToOneField(User, on_delete=models.CASCADE,blank=True,null=True)
+    is_admin = models.BooleanField(default=False)
 
     email = models.EmailField(blank=True,null=True)
     foto = models.ImageField('Фото', upload_to='images', blank=True,null=True)
@@ -170,6 +182,14 @@ class Person(models.Model):
     def __str__(self):
         return self.full_name()
 
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Person.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.person.save()
 
 
 class Player(models.Model):
@@ -271,45 +291,85 @@ class Tourney(models.Model):
 class Tourney_Group(models.Model):
     name = models.CharField(max_length=50)
     tourney = models.ForeignKey(Tourney, on_delete=models.SET_NULL, blank='TRUE', null='True')
+    play_off = models.BooleanField(default=False)
     class Meta:
         verbose_name = 'Турнірна група'
         verbose_name_plural = 'Турнірні групи'
         ordering = ('name',)
+    def s_name(self):
+        s = self.name
+        if not self.play_off:
+            s = 'Група '+s
+        return s
     def __str__(self):
         return self.tourney.__str__() +'  ' +self.name
 
 class Match(models.Model):
     game_type = models.ForeignKey(Match_type,db_index=True, on_delete=models.SET_NULL, blank='TRUE', null='True')
     court = models.ForeignKey(Court, on_delete=models.SET_NULL, blank='TRUE', null='True')
-    dt = models.DateTimeField(blank=True,null=True)
-    is_official = models.BooleanField(default=True)
+    dt = models.DateTimeField('Дата',blank=True,null=True)
+    is_official = models.BooleanField('Офіційна',default=True)
     tourney_group = models.ForeignKey(Tourney_Group, on_delete=models.SET_NULL, blank='TRUE', null='True')
+    group_id = models.IntegerField('№ в групі',default=0)
     player1 = models.ForeignKey(Player, related_name='p1',db_index=True, on_delete=models.SET_NULL, blank='TRUE', null='True')
     player2 = models.ForeignKey(Player, related_name='p2',db_index=True,on_delete=models.SET_NULL, blank='TRUE', null='True')
     player3 = models.ForeignKey(Player, related_name='p3',db_index=True,on_delete=models.SET_NULL, blank='TRUE', null='True')
     player4 = models.ForeignKey(Player, related_name='p4',db_index=True,on_delete=models.SET_NULL, blank='TRUE', null='True')
-    s1 = models.IntegerField(default=0)
-    s2 = models.IntegerField(default=0)
+    s1 = models.IntegerField('сет1',default=0)
+    s2 = models.IntegerField('сет2',default=0)
     g1 = models.IntegerField(default=0)
     g2 = models.IntegerField(default=0)
-    is_winner = models.BooleanField(default=True)
-    winner = models.IntegerField(default=0)
+    is_winner = models.BooleanField('Є переможець?',default=True)
+    winner = models.IntegerField('Переможець',default=0)
     class Meta:
         verbose_name = 'Матч'
         verbose_name_plural = 'Матчі'
         ordering = ('-dt',)
-    def __str__(self):
-        rez =' '+ str(self.s1)+':'+str(self.s2)
+    def rezs1(self):
         r2 =''
         for s in self.set_set.all():
-            r2 = r2 + str(s)+' '
-        if r2:
-            r2 = ' ('+r2+')'
-            rez = rez+r2
-        if self.player3 and self.player4:
-            return self.player1.__str__()+'/'+self.player3 .__str__() +' - '+ self.player2.__str__()+'/'+self.player4 .__str__() +  rez
+            r2 = r2 + str(s)+', '
+        return r2[:-2]
+
+    def rezs2(self):
+        r2 =''
+        for s in self.set_set.all():
+            s1 = str(s)
+            r2 = r2 + s1[::-1] +', '
+        return r2[:-2]
+
+    def rez1(self):
+        rez = str(self.s1)+':'+str(self.s2)
+        if self.rezs1():
+            rez +=' ('+self.rezs1()+')'
+        return rez
+    rez1.short_description = 'Рахунок'
+    def rez2(self):
+        rez = str(self.s2)+':'+str(self.s1)
+        if self.rezs2():
+            rez +=' ('+self.rezs2()+')'
+        return rez
+
+    def pplayer1(self):
+        if self.player3:
+            return self.player1.__str__() + '/' + self.player3.__str__()
         else:
-            return self.player1.__str__()  + ' - ' + self.player2.__str__()+rez
+            return self.player1.__str__()
+    pplayer1.short_description = 'Суперник1'
+    def pplayer2(self):
+        if self.player4:
+            return self.player2.__str__() + '/' + self.player4.__str__()
+        else:
+            return self.player2.__str__()
+    pplayer2.short_description = 'Суперник2'
+
+    def pp(self):
+        return self.pplayer1() + ' - ' + self.pplayer2()
+    pp.short_description = 'Гравці'
+
+    def __str__(self):
+        return self.pp()+' '+self.rez1()
+
 
 class Set(models.Model):
     match = models.ForeignKey(Match, db_index=True, on_delete=models.SET_NULL, blank='TRUE', null='True')

@@ -19,13 +19,13 @@ class SetInline(admin.TabularInline):
 
 class MatchAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,               {'fields': [('game_type', 'court','dt', 'is_official','tourney_group')]}),
+        (None,               {'fields': [('game_type', 'court','dt', 'is_official','tourney_group', 'group_id')]}),
         ('Гравці', {'fields': [('player1','player2'), ('player3','player4')]}),
         ('Результати', {'fields': [('s1', 's2', 'g1', 'g2','is_winner', 'winner' )]}),
     ]
     inlines = [SetInline]
-    list_display = ('__str__','player1','player2','player3','player4', 'dt' ,'s1', 's2', 'g1','g2')
-    list_filter = ['dt']
+    list_display = ('pp','rez1', 'pplayer1','pplayer2', 'court' ,'dt', 'is_official','tourney_group')
+    list_filter = ['dt','tourney_group__tourney','tourney_group']
     search_fields = ['player1__person__last_name','player2__person__last_name','player3__person__last_name','player4__person__last_name']
 
 admin.site.register(Match, MatchAdmin)

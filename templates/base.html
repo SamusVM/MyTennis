@@ -35,7 +35,7 @@
 
                 <a class="nav-link dropdown-toggle " href="#" id="navbardrop" data-toggle="dropdown">Турніри</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{% url 'poll_index' %}">Весна 2020</a>
+                        <a class="dropdown-item" href="{% url 'tourney_index' %}">Турніри 2020</a>
                         <a class="dropdown-item" href="{% url 'poll_index' %}">Архів 2019</a>
 
                     </div>
@@ -44,6 +44,7 @@
              <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Результати</a>
                     <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'last_results_index' %}">Останні результати</a>
                         <a class="dropdown-item" href="{% url 'poll_index' %}">Архів</a>
 
                     </div>
@@ -54,42 +55,40 @@
              <li class="nav-item">
                 <a class="nav-link" href="{% url 'poll_index' %}">Галерея</a>
              </li>
-             <li class="nav-item">
-                <a class="nav-link" href=" http://127.0.0.1:8000/admin/">Адміністрування</a>
-             </li>
+
 
 
           </ul>
 
-{#<div class="collapse navbar-collapse" id="mainMenu">#}
-{#      {% if user.is_authenticated %}#}
-{#        <ul class="navbar-nav ml-auto">#}
-{#          <li class="nav-item dropdown">#}
-{#            <a class="nav-link dropdown-toggle" href="#" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
-{#             {% if user.userprofile.avatar %}#}
-{#              <img src="{{ user.userprofile.avatar.url }}" style="height: 44px" class="rounded-circle">#}
-{#             {% endif %}#}
-{##}
-{#                {{ user.first_name}} {{ user.last_name }}#}
-{#            </a>#}
-{#            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">#}
-{#              <a class="dropdown-item" href="#">Мій аккаунт</a>#}
-{#{% if user.userprofile.is_it_admin  %}#}
-{#              <a class="dropdown-item" href="{% url 'admin:index' %}"> Адмінка</a>#}
-{#{% endif %}#}
-{#             {% if user.userprofile.is_bets %}<a class="dropdown-item" href="{% url 'bets:index' %}">Ставки</a>{% endif %}#}
-{#              <div class="dropdown-divider"></div>#}
-{#              <a class="dropdown-item" href="{% url 'logout' %}">Вихід</a>#}
-{#            </div>#}
-{#          </li>#}
-{#        </ul>#}
-{#      {% else %}#}
-{#        <form class="form-inline ml-auto">#}
-{#          <a href="{% url 'login' %}" class="btn btn-outline-dark">Вхід</a>#}
+<div class="collapse navbar-collapse" id="mainMenu">
+      {% if user.is_authenticated %}
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             {% if user.person.foto %}
+
+              <img src="{{ user.person.foto.url }}" style="height: 44px" class="rounded-circle">
+             {% endif %}
+
+                {{ user.person.first_name}} {{ user.person.last_name }}
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
+              <a class="dropdown-item" href="#">Мій аккаунт</a>
+{% if user.person.is_admin  %}
+              <a class="dropdown-item" href="{% url 'admin:index' %}"> Адміністрування</a>
+{% endif %}
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="{% url 'logout' %}">Вихід</a>
+            </div>
+          </li>
+        </ul>
+      {% else %}
+        <form class="form-inline ml-auto">
+          <a href="{% url 'login' %}" class="btn btn-outline-dark">Вхід</a>
 {#          <a href="{% url 'signup' %}" class="btn btn-primary ml-2">Реєстрація</a>#}
-{#        </form>#}
-{#      {% endif %}#}
-{#</div>#}
+        </form>
+      {% endif %}
+</div>
 
   </div>
 

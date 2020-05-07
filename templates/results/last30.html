@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Останні результати{% endblock %}
+{% block stylesheet %}
+
+{% endblock %}
+
+{% block breadcrumb %}
+{# <li class="breadcrumb-item" ><h5><a href="{% url 'news_index' %}">Íîâèíè</a></h5></li>#}
+
+{% endblock %}
+
+{% block content %}
+
+{% if last_resusts_list %}
+   <div class="table-responsive">
+    <table class="table table-striped">
+      <thead >
+        <tr class="bg-info">
+          <th>Гравці</th>
+          <th>Рахунок</th>
+          <th>Дата</th>
+          <th>Корт</th>
+        </tr>
+      </thead>
+
+      <tbody>
+      {% for r in last_resusts_list %}
+        <tr>
+          <td>{{ r.pp }}</td>
+          <td>{{ r.rez1 }}</td>
+          <td>{{ r.dt|date:"d.m.Y" }}</td>
+          <td>{{ r.court }}</td>
+
+        </tr>
+       {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% else %}
+    <p>Відсутні результати.</p>
+{% endif %}
+</div>
+{% endblock %}

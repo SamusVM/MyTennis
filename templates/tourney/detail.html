@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Тенісні турніри{% endblock %}
+{% block stylesheet %}
+
+{% endblock %}
+
+{% block breadcrumb %}
+
+    <li class="breadcrumb-item" ><h5>
+      {% for foo in tourney.tourney_group_set.all %}
+        <a href="{% url 'tourney_group_detail' 1 foo.id %}">
+           <button type="button" class="btn {% if foo.play_off  %} btn-info {% else %} btn-outline-info{% endif %} "> {{ foo.s_name }}</button>
+
+
+
+        </a>
+      {% endfor %}
+    </h5></li>
+
+
+
+
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Тенісні турніри{% endblock %}
+{% block stylesheet %}
+
+{% endblock %}
+
+{% block breadcrumb %}
+ <li class="breadcrumb-item" ><h5><a href="{% url 'tourney_index' %}">Турніри 2020</a></h5></li>
+
+{% endblock %}
+
+{% block content %}
+
+{% if tourney_list %}
+    <ul class="list-group">
+    {% for t in tourney_list %}
+         <li class="list-group-item">
+{#            <div class="row">#}
+{#                <div class="col-md-6">#}
+{#                    <a href="{% url 'tourney_detail' t.id %}"> {{ t.name }}</a>#}
+{#                </div>#}
+{#                <div class="col-md-3">{{ t.stadium }}</div>#}
+{#                <div class="col-md-3">{{ t.dt }}</div>#}
+{#                #}
+{#            </div>#}
+{#        </li>#}
+{#        #}
+
+
+
+
+     <div class="card shadow-lg p-4 mb-4">
+
+
+        <div class="card-header ">
+         <div class="row">
+             <div class="col-md-8"> <h5><a href="{% url 'tourney_detail' t.id %}"> {{ t.name }}</a> </h5>   </div>
+
+             <div class="col-md-4">  <span class="float-right">{{ t.dt|date:"d.m.Y" }}</span> </div>
+
+         </div>
+        </div>
+
+
+        <div class="card-body">
+{#            <img src="../media/{{ news.foto }}" width="{{ news.foto_per }}%" class="float-right">#}
+            {{ t.rules|linebreaksbr }}
+
+
+        </div>
+        <div class="card-footer">    </div>
+    </div>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Відсутні турніри</p>
+{% endif %}
+</div>
+{% endblock %}
