@@ -291,6 +291,7 @@ class Tourney(models.Model):
 class Tourney_Group(models.Model):
     name = models.CharField(max_length=50)
     tourney = models.ForeignKey(Tourney, on_delete=models.SET_NULL, blank='TRUE', null='True')
+    n_players = models.IntegerField('число гравців', default=4)
     play_off = models.BooleanField(default=False)
     class Meta:
         verbose_name = 'Турнірна група'
@@ -311,6 +312,8 @@ class Match(models.Model):
     is_official = models.BooleanField('Офіційна',default=True)
     tourney_group = models.ForeignKey(Tourney_Group, on_delete=models.SET_NULL, blank='TRUE', null='True')
     group_id = models.IntegerField('№ в групі',default=0)
+    p1_target_match = models.ForeignKey('self', related_name='p1_t', on_delete=models.SET_NULL, blank='TRUE', null='True')
+    p2_target_match = models.ForeignKey('self', related_name='p2_t',on_delete=models.SET_NULL, blank='TRUE', null='True')
     player1 = models.ForeignKey(Player, related_name='p1',db_index=True, on_delete=models.SET_NULL, blank='TRUE', null='True')
     player2 = models.ForeignKey(Player, related_name='p2',db_index=True,on_delete=models.SET_NULL, blank='TRUE', null='True')
     player3 = models.ForeignKey(Player, related_name='p3',db_index=True,on_delete=models.SET_NULL, blank='TRUE', null='True')
@@ -321,17 +324,28 @@ class Match(models.Model):
     g2 = models.IntegerField(default=0)
     is_winner = models.BooleanField('Є переможець?',default=True)
     winner = models.IntegerField('Переможець',default=0)
+    withdrawal = models.BooleanField('відмова',default=False)
     class Meta:
         verbose_name = 'Матч'
         verbose_name_plural = 'Матчі'
         ordering = ('-dt',)
     def rezs1(self):
+        if self.withdrawal:
+            if self.winner==1:
+                return 'тех. перемога'
+            elif self.winner==2:
+                return 'тех. поразка'
         r2 =''
         for s in self.set_set.all():
             r2 = r2 + str(s)+', '
         return r2[:-2]
 
     def rezs2(self):
+        if self.withdrawal:
+            if self.winner==2:
+                return 'тех. перемога'
+            elif self.winner==1:
+                return 'тех. поразка'
         r2 =''
         for s in self.set_set.all():
             s1 = str(s)
@@ -344,6 +358,7 @@ class Match(models.Model):
             rez +=' ('+self.rezs1()+')'
         return rez
     rez1.short_description = 'Рахунок'
+
     def rez2(self):
         rez = str(self.s2)+':'+str(self.s1)
         if self.rezs2():
@@ -454,6 +469,7 @@ class Tourney_Group_Player(models.Model):
     tourney_group = models.ForeignKey(Tourney_Group, on_delete=models.SET_NULL, blank='TRUE', null='True')
     nn = models.IntegerField(default=0)
     player = models.ForeignKey(Player, on_delete=models.SET_NULL, blank='TRUE', null='True')
+    withdrawal = models.BooleanField(default=False)
     class Meta:
         verbose_name = 'Гравець турніру'
         verbose_name_plural = 'Гравці турніру'
@@ -501,6 +517,8 @@ class Tag(models.Model):
         verbose_name = 'Тег'
         verbose_name_plural = 'Тег'
         ordering = ('name',)
+    def __str__(self):
+        return self.name
 
 class News(models.Model):
     pub_date = models.DateTimeField()
@@ -519,11 +537,20 @@ class News(models.Model):
 class Myimage(models.Model):
     img = models.ImageField('Фото', upload_to='images')
     dt = models.DateTimeField(blank=True, null=True,)
-    tag = models.ForeignKey(Tag,blank=True, null=True, on_delete=models.SET_NULL)
+    tag = models.ManyToManyField(Tag,blank=True, null=True)
+    tourney = models.ForeignKey(Tourney, on_delete=models.SET_NULL, blank='TRUE', null='True')
     class Meta:
         verbose_name = 'Фото'
         verbose_name_plural = 'Фото'
         ordering = ('-dt',)
+    def txt(self):
+        s=''
+        for i in self.tag.prefetch_related():
+            s += '#'+str(i)+', '
+        return s[:-2]
+
+    def __str__(self):
+        return self.txt()
 
 class Order_court(models.Model):
     court = models.ForeignKey(Court,blank=True, null=True, on_delete=models.SET_NULL)

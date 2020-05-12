@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Фото{% endblock %}
+{% block stylesheet %}
+
+{% endblock %}
+
+{% block breadcrumb %}
+ <li class="breadcrumb-item" ><h5><a href="{% url 'foto_index' %}">Галерея</a></h5></li>
+
+{% endblock %}
+
+{% block content %}
+
+{% if foto %}
+  <img class="card-img-top" src="{{ foto.img.url }}" alt="{{ foto.txt }}">
+{% endif %}
+</div>
+{% endblock %}

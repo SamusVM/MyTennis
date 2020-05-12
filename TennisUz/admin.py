@@ -21,7 +21,7 @@ class MatchAdmin(admin.ModelAdmin):
     fieldsets = [
         (None,               {'fields': [('game_type', 'court','dt', 'is_official','tourney_group', 'group_id')]}),
         ('Гравці', {'fields': [('player1','player2'), ('player3','player4')]}),
-        ('Результати', {'fields': [('s1', 's2', 'g1', 'g2','is_winner', 'winner' )]}),
+        ('Результати', {'fields': [('s1', 's2', 'g1', 'g2','is_winner', 'winner','withdrawal' )]}),
     ]
     inlines = [SetInline]
     list_display = ('pp','rez1', 'pplayer1','pplayer2', 'court' ,'dt', 'is_official','tourney_group')

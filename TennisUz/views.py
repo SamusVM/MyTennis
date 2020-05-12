@@ -4,8 +4,9 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
+from django.db.models import Q
 
-from .models import Question, Choice, News, Match,Tourney, Tourney_Group
+from .models import Question, Choice, News, Match,Tourney, Tourney_Group, Tourney_Group_Player, Myimage
 
 
 def index(request):
@@ -98,9 +99,82 @@ def tourney_detail(request, tid):
     }
     return  render(request,'tourney/detail.html',context)
 
+def get_table_group_by_id(gid):
+    tourney_group = get_object_or_404(Tourney_Group, pk=gid)
+    n_players =tourney_group.n_players
+    players = Tourney_Group_Player.objects.filter(tourney_group=gid).order_by('nn')
+    tg = []
+    i = 1
+    y = ['NN','Гравці']
+    for k in range(n_players):
+        y.append(str(k+1))
+    y.append('Ігор')
+    y.append('Очків')
+    y.append('Сети')
+    y.append('Гейми')
+    tg.append(y)
+    for p in players:
+        y = [str(i),str(p.player)]
+        matches, points,sets1,sets2, games1,games2 = 0,0,0,0,0,0
+        for p1 in players:
+            if p1.id == p.id:
+                y.append('x')
+            else:
+                m1 = Match.objects.filter(player1_id= p.player_id, player2_id=p1.player_id)
+                m2 = Match.objects.filter(player1_id=p1.player_id, player2_id= p.player_id)
+                if len(m1)>0:
+                    m=m1[0]
+                    matches+=1
+                    if m.s1>m.s2:
+                        points +=1
+                    sets1 += m.s1
+                    sets2 += m.s2
+                    games1 += m.g1
+                    games2 += m.g2
+                    y.append(m.rezs1())
+                elif len(m2)>0:
+                    m = m2[0]
+                    matches += 1
+                    if m.s1 < m.s2:
+                        points += 1
+                    sets1 += m.s2
+                    sets2 += m.s1
+                    games1 += m.g2
+                    games2 += m.g1
+                    y.append(m.rezs2())
+                else:
+                    y.append('-')
+        y.append(str(matches))
+        y.append(str(points))
+        y.append(str(sets1) + '-' +str(sets2))
+        y.append(str(games1) + '-' + str(games2))
+
+
+        i=i+1
+        tg.append(y)
+    return tg
+
 def tourney_group_detail(request,tid, gid):
     tourney_group = get_object_or_404(Tourney_Group, pk=gid)
+    tg = get_table_group_by_id(gid)
+    last_resusts_list = Match.objects.filter(tourney_group_id=gid).order_by('-dt')
     context = {
-        'tourney_group': tourney_group,
+        'tourney_group_head': tg[:1],
+        'tourney_group_body': tg[1:],
+        'tourney_group':tourney_group,
+        'last_resusts_list':last_resusts_list,
+
     }
     return  render(request,'tourney/group_detail.html',context)
+
+def foto_index(request):
+    foto_list = Myimage.objects.all().order_by('-dt')
+    foto_list = foto_list[:10]
+    return render(request, 'foto/index.html', {'foto_list': foto_list})
+
+def foto_detail(request, pk):
+    foto = get_object_or_404(Myimage, pk=pk)
+    context = {
+        'foto': foto,
+    }
+    return  render(request,'foto/detail.html',context)

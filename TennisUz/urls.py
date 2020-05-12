@@ -16,6 +16,7 @@ urlpatterns = [
     path('poll/<int:pk>/', views.PollDetailView.as_view(), name='poll_detail'),
     path('poll/<int:pk>/results/', views.PollResultsView.as_view(), name='poll_results'),
     path('poll/<int:question_id>/vote/', views.poll_vote, name='poll_vote'),
-
+    path('foto/', views.foto_index, name='foto_index'),
+    path('foto/<int:pk>/', views.foto_detail, name='foto_detail'),
 ]
               # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

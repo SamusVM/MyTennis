@@ -1,10 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Результати{% endblock %}
+{% block stylesheet %}
 
-</body>
-</html>
+{% endblock %}
+
+{% block breadcrumb %}
+ <li class="breadcrumb-item" ><h5><a href="{% url 'tourney_detail' tourney_group.tourney_id %}">{{ tourney_group.tourney }}</a></h5></li>
+ <li class="breadcrumb-item" >{{ tourney_group.name }}</li>
+
+{% endblock %}
+
+{% block content %}
+   {% if tourney_group_body %}
+   <div class="container">
+{#  <h2>Bordered Table</h2>#}
+
+  <table class="table table-bordered table-hover">
+     {% if tourney_group_head %}
+    <thead>
+      <tr class="bg-info">
+          {% for th in tourney_group_head %}
+              {% for foo in th %}
+               <th>{{ foo }}</th>
+              {% endfor %}
+           {% endfor %}
+      </tr>
+    </thead>
+    {% endif %}
+  {% if tourney_group_body %}
+      <tbody>
+      {% for tb in tourney_group_body %}
+      <tr>
+      {% for foo in tb %}
+          {% if foo == 'x' %}
+           <td class="bg-light"></td>
+          {% else %}
+          <td>{{ foo }}</td>
+          {% endif %}
+
+      {% endfor %}
+
+
+
+      </tr>
+     {% endfor %}
+    </tbody>
+  {% endif %}
+
+
+  </table>
+<p> </p>
+   {% if last_resusts_list %}
+   <div class="table-responsive">
+    <table class="table table-striped">
+      <thead >
+        <tr >
+          <th>Гравці</th>
+          <th>Рахунок</th>
+          <th>Дата</th>
+          <th>Корт</th>
+        </tr>
+      </thead>
+
+      <tbody>
+      {% for r in last_resusts_list %}
+        <tr>
+          <td>{{ r.pp }}</td>
+          <td>{{ r.rez1 }}</td>
+          <td>{{ r.dt|date:"d.m.Y" }}</td>
+          <td>{{ r.court }}</td>
+
+        </tr>
+       {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% else %}
+    <p>Відсутні результати.</p>
+{% endif %}
+</div>
+
+   {% endif %}
+
+{% endblock %}

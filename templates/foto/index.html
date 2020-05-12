@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Галерея{% endblock %}
+{% block stylesheet %}
+
+{% endblock %}
+
+{% block breadcrumb %}
+ <li class="breadcrumb-item" ><h5><a href="{% url 'foto_index' %}">Галерея</a></h5></li>
+
+{% endblock %}
+
+{% block content %}
+
+{% if foto_list %}
+<div class="d-flex flex-wrap p-3">
+    {% for foto in foto_list %}
+        <div class="card" style="width:300px">
+        <a href="{% url 'foto_detail'  foto.id  %}" >
+            <img class="card-img-top" src="{{ foto.img.url }}" alt="{{ foto.txt }}"></a>
+            {{ foto.txt }}
+{#            <div class="card-body">#}
+{##}
+{#                <p class="card-text">{{ foto.txt }}</p>#}
+{##}
+{#  </div>#}
+</div>
+    {% endfor %}
+ </div>
+{% else %}
+    <p>Галерея порожня.</p>
+{% endif %}
+</div>
+{% endblock %}
