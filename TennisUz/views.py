@@ -186,9 +186,9 @@ def get_pf_by_id(gid):
                 y.append(r)
             else:
                 r['p'] =' '
-                r['r'] = ''
-                r['p1'] = ''
-                r['p2'] = ''
+                r['r'] = ' '
+                r['p1'] = ' '
+                r['p2'] = ' '
                 r['perc'] = perc
                 r['i'] = n_round - i
                 y.append(r)
