@@ -312,6 +312,8 @@ class Match(models.Model):
     is_official = models.BooleanField('Офіційна',default=True)
     tourney_group = models.ForeignKey(Tourney_Group, on_delete=models.SET_NULL, blank='TRUE', null='True')
     group_id = models.IntegerField('№ в групі',default=0)
+    tg1 = models.CharField('Джерело1', max_length=100, blank='TRUE', null='True')
+    tg2 = models.CharField('Джерело2', max_length=100, blank='TRUE', null='True')
     p1_target_match = models.ForeignKey('self', related_name='p1_t', on_delete=models.SET_NULL, blank='TRUE', null='True')
     p2_target_match = models.ForeignKey('self', related_name='p2_t',on_delete=models.SET_NULL, blank='TRUE', null='True')
     player1 = models.ForeignKey(Player, related_name='p1',db_index=True, on_delete=models.SET_NULL, blank='TRUE', null='True')
@@ -353,29 +355,50 @@ class Match(models.Model):
         return r2[:-2]
 
     def rez1(self):
-        rez = str(self.s1)+':'+str(self.s2)
+        ss1 = '?'
+        ss2 = '?'
+        if self.s1 or self.s2:
+            ss1 = str(self.s1)
+            ss2 = str(self.s2)
+        rez = ss1+':'+ss2
         if self.rezs1():
             rez +=' ('+self.rezs1()+')'
         return rez
     rez1.short_description = 'Рахунок'
 
     def rez2(self):
-        rez = str(self.s2)+':'+str(self.s1)
+        ss1 = '?'
+        ss2 = '?'
+        if self.s1 or self.s2:
+            ss1 = str(self.s2)
+            ss2 = str(self.s1)
+        rez = ss1+':'+ss2
         if self.rezs2():
             rez +=' ('+self.rezs2()+')'
         return rez
 
     def pplayer1(self):
-        if self.player3:
-            return self.player1.__str__() + '/' + self.player3.__str__()
+        if self.player1:
+            if self.player3:
+                return self.player1.__str__() + '/' + self.player3.__str__()
+            else:
+                return self.player1.__str__()
+        elif self.tg1:
+            return self.tg1
         else:
-            return self.player1.__str__()
+            return ' ? '
     pplayer1.short_description = 'Суперник1'
+
     def pplayer2(self):
-        if self.player4:
-            return self.player2.__str__() + '/' + self.player4.__str__()
+        if self.player2:
+            if self.player4:
+                return self.player2.__str__() + '/' + self.player4.__str__()
+            else:
+                return self.player2.__str__()
+        elif self.tg2:
+            return  self.tg2
         else:
-            return self.player2.__str__()
+            return  ' ? '
     pplayer2.short_description = 'Суперник2'
 
     def pp(self):

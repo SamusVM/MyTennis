@@ -30,7 +30,7 @@
           <td>{{ r.pp }}</td>
           <td>{{ r.rez1 }}</td>
           <td>{{ r.dt|date:"d.m.Y" }}</td>
-          <td>{{ r.court }}</td>
+          <td>{{ r.court|default_if_none:"" }}</td>
 
         </tr>
        {% endfor %}

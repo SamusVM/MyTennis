@@ -8,8 +8,10 @@
 {% block breadcrumb %}
 
     <li class="breadcrumb-item" ><h5>
+            <a href="{% url 'tourney_detail' tourney.id %}">
+                <button type="button" class="btn btn-primary"> {{ tourney.name }}</button></a>
       {% for foo in tourney.tourney_group_set.all %}
-        <a href="{% url 'tourney_group_detail' 1 foo.id %}">
+        <a href="{% url 'tourney_group_detail' tourney.id foo.id %}">
            <button type="button" class="btn {% if foo.play_off  %} btn-info {% else %} btn-outline-info{% endif %} "> {{ foo.s_name }}</button>
 
 
@@ -24,5 +26,35 @@
 {% endblock %}
 
 {% block content %}
+{{ tourney.rules }}
+    {% if last_resusts_list %}
+   <div class="table-responsive">
+    <table class="table table-striped">
+      <thead >
+        <tr class="bg-info">
+          <th>Гравці</th>
+          <th>Рахунок</th>
+          <th>Дата</th>
+          <th>Корт</th>
+        </tr>
+      </thead>
+
+      <tbody>
+      {% for r in last_resusts_list %}
+        <tr>
+          <td>{{ r.pp }}</td>
+          <td>{{ r.rez1 }}</td>
+          <td>{{ r.dt|date:"d.m.Y" }}</td>
+          <td>{{ r.court|default_if_none:"" }}</td>
+
+        </tr>
+       {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% else %}
+    <p>Відсутні результати.</p>
+{% endif %}
 
 {% endblock %}

@@ -20,7 +20,7 @@ class SetInline(admin.TabularInline):
 class MatchAdmin(admin.ModelAdmin):
     fieldsets = [
         (None,               {'fields': [('game_type', 'court','dt', 'is_official','tourney_group', 'group_id')]}),
-        ('Гравці', {'fields': [('player1','player2'), ('player3','player4')]}),
+        ('Гравці', {'fields': [('player1','player2','tg1', 'tg2'), ('player3','player4')]}),
         ('Результати', {'fields': [('s1', 's2', 'g1', 'g2','is_winner', 'winner','withdrawal' )]}),
     ]
     inlines = [SetInline]

@@ -6,20 +6,61 @@
 {% endblock %}
 
 {% block breadcrumb %}
- <li class="breadcrumb-item" ><h5><a href="{% url 'tourney_detail' tourney_group.tourney_id %}">{{ tourney_group.tourney }}</a></h5></li>
- <li class="breadcrumb-item" >{{ tourney_group.name }}</li>
+    <li class="breadcrumb-item" ><h5>
+        <a href="{% url 'tourney_detail' tourney.id %}">
+            <button type="button" class="btn btn-primary"> {{ tourney.name }}</button></a>
+
+      {% for foo in tourney.tourney_group_set.all %}
+        <a href="{% url 'tourney_group_detail' tourney.id foo.id %}">
+           <button type="button" class="btn {% if foo.play_off  %} btn-info {% else %} btn-outline-info{% endif %} "> {{ foo.s_name }}</button>
+
+
+
+        </a>
+      {% endfor %}
+    </h5></li>
+
 
 {% endblock %}
 
 {% block content %}
-   {% if tourney_group_body %}
-   <div class="container">
-{#  <h2>Bordered Table</h2>#}
+    {% if pf %}
+       <div class="row mb-4">
+            {% for r in pf %}
+             <div class="col">
+                    {% for r1 in r %}
+                    <div class="card m-{{ r1.i }}" style="height: {{ r1.perc }}%">
+                        <div class="row my-auto pl-2">
+                           <div class="col-7">
+                               <div >{{ r1.p1 }}  </div>
+                               <div >  {{ r1.p2 }}    </div>
 
-  <table class="table table-bordered table-hover">
-     {% if tourney_group_head %}
+                           </div>
+                           <div class="col-5">
+                                <div class="card border border-white " style="height: 100%">
+                                    <div class="my-auto"> {{ r1.r }}   </div>
+
+                                </div>
+                           </div>
+
+                        </div>
+                     </div>
+            {% endfor %}
+
+             </div>
+
+            {% endfor %}
+
+
+       </div>
+    {% endif %}
+
+   {% if tourney_group_body %}
+    <div class="container" >
+     <table class="table table-bordered table-hover">
+  {% if tourney_group_head %}
     <thead>
-      <tr class="bg-info">
+      <tr class="bg-success">
           {% for th in tourney_group_head %}
               {% for foo in th %}
                <th>{{ foo }}</th>
@@ -47,11 +88,14 @@
      {% endfor %}
     </tbody>
   {% endif %}
+     </table>
 
+    </div>
 
-  </table>
-<p> </p>
+   {% endif %}
    {% if last_resusts_list %}
+<p> </p>
+<p> </p>
    <div class="table-responsive">
     <table class="table table-striped">
       <thead >
@@ -69,7 +113,7 @@
           <td>{{ r.pp }}</td>
           <td>{{ r.rez1 }}</td>
           <td>{{ r.dt|date:"d.m.Y" }}</td>
-          <td>{{ r.court }}</td>
+          <td>{{ r.court|default_if_none:"" }}</td>
 
         </tr>
        {% endfor %}
@@ -80,8 +124,7 @@
 {% else %}
     <p>Відсутні результати.</p>
 {% endif %}
-</div>
 
-   {% endif %}
+
 
 {% endblock %}
