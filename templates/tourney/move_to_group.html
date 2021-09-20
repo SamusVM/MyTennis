@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Результати{% endblock %}
+{% block stylesheet %}
+
+{% endblock %}
+
+{% block content %}
+    {% if inst %}
+    <h4>{{inst.player}}</h4>
+     {% else %}
+      <h4>Призначити групу</h4>
+    {% endif %}
+    <form method="POST" class="post-form ">{% csrf_token %}
+   {{ form }}
+        <button type="submit" class="save btn btn-outline-primary">Зберегти</button>
+    </form>
+
+
+{% endblock %}

@@ -17,8 +17,12 @@ from django.contrib import admin
 from django.urls import include,path
 from django.conf.urls.static import static
 from django.conf import settings
+from  TennisUz import views
 
 urlpatterns = [
+    # path('', views.last_results, name='last_results_index'),
+    path('', views.NewsIndexView.as_view(), name='news_index'),
+
     # path('', views.index, name='index'),
     path('TennisUz/',include('TennisUz.urls')),
     path('admin/', admin.site.urls),

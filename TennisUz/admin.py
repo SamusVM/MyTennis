@@ -15,16 +15,18 @@ admin.site.register(Hand)
 
 class SetInline(admin.TabularInline):
     model = Set
+    fields = [
+        ('g1','g2','is_tiebreak', 'tb1','tb2', 'is_winner')
+       ]
     extra = 1
 
 class MatchAdmin(admin.ModelAdmin):
     fieldsets = [
         (None,               {'fields': [('game_type', 'court','dt', 'is_official','tourney_group', 'group_id')]}),
         ('Гравці', {'fields': [('player1','player2','tg1', 'tg2'), ('player3','player4')]}),
-        ('Результати', {'fields': [('s1', 's2', 'g1', 'g2','is_winner', 'winner','withdrawal' )]}),
+        ('Результати', {'fields': [('score', 'withdrawal' )]}),
     ]
-    inlines = [SetInline]
-    list_display = ('pp','rez1', 'pplayer1','pplayer2', 'court' ,'dt', 'is_official','tourney_group')
+    list_display = ('pp','rez1', 'g1','g2', 'pplayer1','pplayer2', 'court' ,'dt', 'is_official','tourney_group','group_id')
     list_filter = ['dt','tourney_group__tourney','tourney_group']
     search_fields = ['player1__person__last_name','player2__person__last_name','player3__person__last_name','player4__person__last_name']
 
@@ -36,7 +38,14 @@ admin.site.register(Order_court)
 admin.site.register(Person)
 admin.site.register(Place_Court)
 admin.site.register(Player)
-admin.site.register(Player_Rank)
+
+class Player_RankAdmin(admin.ModelAdmin):
+    list_display = ('tourney', 'player', 'delta_rahk','dt')
+    ordering = ['dt','-delta_rahk','tourney']
+    list_filter = ['tourney','player']
+    # search_fields = ['tourney','player']
+
+admin.site.register(Player_Rank,Player_RankAdmin)
 
 class ChoiceInline(admin.TabularInline):
     model = Choice
@@ -73,10 +82,10 @@ class PlayerInline(admin.StackedInline):
 class Tourney_Group_Player_Admin(admin.ModelAdmin):
     fieldsets = [
         ('Турнір',               {'fields': ['tourney_group']}),
-        ('Гравець', {'fields': ['nn','player']}),
+        ('Гравець', {'fields': ['nn','player','player2' ,'rank']}),
     ]
-    # inlines = [PlayerInline]
-    list_display = ('tourney_group','nn', 'player')
+    #inlines = [PlayerInline]
+    list_display = ('tourney_group','nn', 'player','player2')
     ordering = ['tourney_group','nn']
     list_filter = ['tourney_group__tourney__name','tourney_group__name']
     search_fields = ['tourney_group']

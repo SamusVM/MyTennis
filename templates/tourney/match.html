@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Результати{% endblock %}
+{% block stylesheet %}
+
+{% endblock %}
+
+{% block content %}
+    {% if matchinst %}
+    <h4>{{ matchinst.pp }}</h4>
+     {% else %}
+      <h4>New match</h4>
+    {% endif %}
+     {{ form.media }}
+    <form method="POST" class="post-form ">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-outline-primary">Зберегти</button>
+    </form>
+
+
+{% endblock %}

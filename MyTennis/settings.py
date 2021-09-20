@@ -25,7 +25,7 @@ SECRET_KEY = 's4+e_3fhn%982h88&@o54w4lymh=izfa5_wo2mtjg@^fd(0@i!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','10.10.10.3']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_tables2',
     'crispy_forms',
     'accounts',
 ]
@@ -72,6 +73,7 @@ TEMPLATES = [
         },
     },
 ]
+DJANGO_TABLES2_TEMPLATE = "django_tables2/bootstrap.html"
 
 WSGI_APPLICATION = 'MyTennis.wsgi.application'
 
@@ -118,6 +120,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+SHORT_DATE_FORMAT = 'j.m.Y'
 
 
 # Static files (CSS, JavaScript, Images)

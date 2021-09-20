@@ -164,8 +164,8 @@ class Person(models.Model):
         ('F','female'),
     )
     sex = models.CharField(max_length=50,choices=ss, default='M')
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=50, blank='TRUE', null='True')
+    last_name = models.CharField(max_length=50, blank='TRUE', null='True')
     user = models.OneToOneField(User, on_delete=models.CASCADE,blank=True,null=True)
     is_admin = models.BooleanField(default=False)
 
@@ -178,7 +178,7 @@ class Person(models.Model):
         verbose_name_plural = 'Фізичні особи'
         ordering = ('last_name','first_name',)
     def full_name(self):
-        return self.last_name + ' '+ self.first_name
+        return self.last_name + ' '+ self.first_name[:1]+'.'
     def __str__(self):
         return self.full_name()
 
@@ -196,19 +196,24 @@ class Player(models.Model):
     person = models.OneToOneField(Person, on_delete=models.CASCADE)
     is_profy = models.BooleanField(default=False)
     d_start = models.DateField(blank='TRUE', null='True')
-    hand = models.ForeignKey(Hand, on_delete=models.SET_NULL, blank='TRUE', null='True',default=1)
-    backhand = models.ForeignKey(Backhand, on_delete=models.SET_NULL, blank='TRUE', null='True',default=1)
-    racket = models.ForeignKey(Rackets, on_delete=models.SET_NULL, blank='TRUE', null='True',default=1)
-    strings = models.ForeignKey(Strings, on_delete=models.SET_NULL, blank='TRUE', null='True',default=1)
-    shoes = models.ForeignKey(Shoes, on_delete=models.SET_NULL, blank='TRUE', null='True',default=1)
-    balls =models.ForeignKey(Balls, on_delete=models.SET_NULL, blank='TRUE', null='True',default=1)
+    hand = models.ForeignKey(Hand, on_delete=models.SET_NULL, blank='TRUE', null='True')
+    backhand = models.ForeignKey(Backhand, on_delete=models.SET_NULL, blank='TRUE', null='True')
+    racket = models.ForeignKey(Rackets, on_delete=models.SET_NULL, blank='TRUE', null='True')
+    strings = models.ForeignKey(Strings, on_delete=models.SET_NULL, blank='TRUE', null='True')
+    shoes = models.ForeignKey(Shoes, on_delete=models.SET_NULL, blank='TRUE', null='True')
+    balls =models.ForeignKey(Balls, on_delete=models.SET_NULL, blank='TRUE', null='True')
     atp_players = models.CharField(max_length=50,blank='TRUE', null='True')
+    def rnk(self):
+        r = Player_Rank.objects.all().filter(player__person_id=self.person_id).aggregate(Sum('delta_rahk'))
+        return r
     class Meta:
         verbose_name = 'Гравець'
         verbose_name_plural = 'Гравці'
-        ordering = ('person',)
+        ordering = ('-person',)
     def __str__(self):
         return self.person.__str__()
+
+
 
 class Match_type(models.Model):
     name = models.CharField(max_length=50)
@@ -278,7 +283,10 @@ class Tourney_Round(models.Model):
 class Tourney(models.Model):
     name = models.CharField(max_length=200)
     dt = models.DateField(blank='True', null= 'True')
+    game_type = models.ForeignKey(Match_type, db_index=True, on_delete=models.SET_NULL, blank='TRUE', null='True')
     rules = models.TextField()
+    k = models.FloatField('коефіцієнт турніру', default=1)
+    draw_counts = models.CharField('гравців в сітках',max_length=20, default='16')
     stadium = models.ForeignKey(Stadium, on_delete=models.SET_NULL, blank='TRUE', null='True')
     court = models.ForeignKey(Court, on_delete=models.SET_NULL, blank='TRUE', null='True')
     class Meta:
@@ -291,23 +299,28 @@ class Tourney(models.Model):
 class Tourney_Group(models.Model):
     name = models.CharField(max_length=50)
     tourney = models.ForeignKey(Tourney, on_delete=models.SET_NULL, blank='TRUE', null='True')
-    n_players = models.IntegerField('число гравців', default=4)
+    n_players = models.IntegerField('число гравців', default=3)
     play_off = models.BooleanField(default=False)
+
+    max_rank = models.IntegerField('максимальне місце', default=1)
+
     class Meta:
         verbose_name = 'Турнірна група'
         verbose_name_plural = 'Турнірні групи'
-        ordering = ('name',)
+        ordering = ('tourney',)
     def s_name(self):
         s = self.name
         if not self.play_off:
             s = 'Група '+s
         return s
+
     def __str__(self):
-        return self.tourney.__str__() +'  ' +self.name
+        # return self.tourney.__str__() +'  ' +self.name
+        return self.name
 
 class Match(models.Model):
     game_type = models.ForeignKey(Match_type,db_index=True, on_delete=models.SET_NULL, blank='TRUE', null='True')
-    court = models.ForeignKey(Court, on_delete=models.SET_NULL, blank='TRUE', null='True')
+    court = models.ForeignKey(Court, on_delete=models.SET_NULL, blank='TRUE', null='True', verbose_name='Корт')
     dt = models.DateTimeField('Дата',blank=True,null=True)
     is_official = models.BooleanField('Офіційна',default=True)
     tourney_group = models.ForeignKey(Tourney_Group, on_delete=models.SET_NULL, blank='TRUE', null='True')
@@ -316,21 +329,112 @@ class Match(models.Model):
     tg2 = models.CharField('Джерело2', max_length=100, blank='TRUE', null='True')
     p1_target_match = models.ForeignKey('self', related_name='p1_t', on_delete=models.SET_NULL, blank='TRUE', null='True')
     p2_target_match = models.ForeignKey('self', related_name='p2_t',on_delete=models.SET_NULL, blank='TRUE', null='True')
-    player1 = models.ForeignKey(Player, related_name='p1',db_index=True, on_delete=models.SET_NULL, blank='TRUE', null='True')
-    player2 = models.ForeignKey(Player, related_name='p2',db_index=True,on_delete=models.SET_NULL, blank='TRUE', null='True')
-    player3 = models.ForeignKey(Player, related_name='p3',db_index=True,on_delete=models.SET_NULL, blank='TRUE', null='True')
-    player4 = models.ForeignKey(Player, related_name='p4',db_index=True,on_delete=models.SET_NULL, blank='TRUE', null='True')
-    s1 = models.IntegerField('сет1',default=0)
-    s2 = models.IntegerField('сет2',default=0)
-    g1 = models.IntegerField(default=0)
-    g2 = models.IntegerField(default=0)
+    player1 = models.ForeignKey(Player, related_name='p1',db_index=True, on_delete=models.SET_NULL, blank='TRUE', null='True', verbose_name='Гравець1')
+    player2 = models.ForeignKey(Player, related_name='p2',db_index=True,on_delete=models.SET_NULL, blank='TRUE', null='True', verbose_name='Гравець2')
+    player3 = models.ForeignKey(Player, related_name='p3',db_index=True,on_delete=models.SET_NULL, blank='TRUE', null='True', verbose_name='Гравець1_2')
+    player4 = models.ForeignKey(Player, related_name='p4',db_index=True,on_delete=models.SET_NULL, blank='TRUE', null='True', verbose_name='Гравець2_2')
+    score = models.TextField(max_length=200, blank='TRUE', null='True', verbose_name='Рахунок')
+
+    #s1 = models.IntegerField('сет1',default=0)
+    #s2 = models.IntegerField('сет2',default=0)
+    # g1 = models.IntegerField(default=0)
+    # g2 = models.IntegerField(default=0)
     is_winner = models.BooleanField('Є переможець?',default=True)
-    winner = models.IntegerField('Переможець',default=0)
+    #winner = models.IntegerField('Переможець',default=0)
     withdrawal = models.BooleanField('відмова',default=False)
     class Meta:
         verbose_name = 'Матч'
         verbose_name_plural = 'Матчі'
         ordering = ('-dt',)
+
+    def is_pp(self):
+        if self.game_type_id ==1:
+            return  not ((self.player1 is None) or (self.player2 is None) )
+        else:
+            return not ((self.player1 is None) or (self.player2 is None) or (self.player3 is None) or (self.player4 is None))
+
+
+    def parse_score(self):
+        def inv(s):
+            if s.find('(')>2:
+                s1 = s[:s.find('(')]
+                s2 = s[s.find('('):]
+                r = s1.split(':')[::-1]
+                return ':'.join(str(i) for i in r)+s2
+            else:
+                r = s.split(':')[::-1]
+                return ':'.join(str(i) for i in r)
+        def del_tb(s):
+            if s.find('(') > 2:
+                return s[:s.find('(')]
+            else:
+                return s
+        if self.score =='' or self.score is None:
+            return [0,0,0,0,0,'-:-','-:-']
+        s = self.score.lower().replace(' ','')
+        ret1 = ['ret1','-+', 'ret 1']
+        ret2 = ['ret2', '+-', 'ret 2']
+        if any(s.find(ss)>=0 for ss in ret1):
+            w=2
+            s1=s2=g1=g2=0
+            score2 ='+-'
+            score1 = '-+'
+        else:
+            if any(s.find(ss)>=0 for ss in ret2):
+                w=1
+                s1=s2=g1=g2=0
+                score1 = '+-'
+                score2 ='-+'
+            else:
+                s1 = s.split(',')
+                score2 = ','.join(inv(j) for j in s1)
+                score1 = ','.join(j for j in s1)
+                l = [del_tb(k).split(':') for k in s1]
+                if len(l)>0:
+                    s1 = sum(i[0] > i[1] for i in l)
+                    s2 = sum(i[0] < i[1] for i in l)
+                    g1 = sum(int(i[0])  for i in l if i[0].isdigit())
+                    g2 = sum(int(i[1]) for i in l if i[0].isdigit())
+                    if s1 > s2:
+                        w=1
+                    else:
+                        if s2 > s1:
+                            w = 2
+                        else:
+                            w = 0
+
+        return [w, s1, s2, g1, g2, score2, score1]
+
+    #vs = self.question.choice_set.aggregate(Sum('votes'))
+    # def g1(self):
+    #     g = 0
+    #     for s in self.set_set.all():
+    #         g = g + int(s.g1)
+    #     return g
+    #
+    # def g2(self):
+    #     g = 0
+    #     for s in self.set_set.all():
+    #         g = g + int(s.g2)
+    #     return g
+    def winner(self):
+        return self.parse_score()[0]
+    def s1(self):
+        return self.parse_score()[1]
+
+    def s2(self):
+        return self.parse_score()[2]
+    def g1(self):
+        return self.parse_score()[3]
+
+    def g2(self):
+        return self.parse_score()[4]
+
+
+    def score1(self):
+        return self.parse_score()[6]
+    def score2(self):
+        return self.parse_score()[5]
     def rezs1(self):
         if self.withdrawal:
             if self.winner==1:
@@ -355,27 +459,28 @@ class Match(models.Model):
         return r2[:-2]
 
     def rez1(self):
-        ss1 = '?'
-        ss2 = '?'
-        if self.s1 or self.s2:
-            ss1 = str(self.s1)
-            ss2 = str(self.s2)
-        rez = ss1+':'+ss2
-        if self.rezs1():
-            rez +=' ('+self.rezs1()+')'
-        return rez
+        # ss1 = '?'
+        # ss2 = '?'
+        # if self.s1 or self.s2:
+        #     ss1 = str(self.s1)
+        #     ss2 = str(self.s2)
+        # rez = ss1+':'+ss2
+        # if self.rezs1():
+        #     rez +=' ('+self.rezs1()+')'
+        return self.score2()
     rez1.short_description = 'Рахунок'
 
     def rez2(self):
-        ss1 = '?'
-        ss2 = '?'
-        if self.s1 or self.s2:
-            ss1 = str(self.s2)
-            ss2 = str(self.s1)
-        rez = ss1+':'+ss2
-        if self.rezs2():
-            rez +=' ('+self.rezs2()+')'
-        return rez
+        # ss1 = '?'
+        # ss2 = '?'
+        # if self.s1 or self.s2:
+        #     ss1 = str(self.s2)
+        #     ss2 = str(self.s1)
+        # rez = ss1+':'+ss2
+        # if self.rezs2():
+        #     rez +=' ('+self.rezs2()+')'
+        return self.score1()
+
 
     def pplayer1(self):
         if self.player1:
@@ -457,48 +562,38 @@ class Game_Log(models.Model):
 
 
 class Player_Rank(models.Model):
-    player = models.ForeignKey(Player, db_index=True,on_delete=models.SET_NULL, blank='TRUE', null='True')
-    match = models.ForeignKey(Match, on_delete=models.SET_NULL, blank='TRUE', null='True')
-    dt = models.DateTimeField(auto_now_add=True)
-    delta_rahk = models.IntegerField(default=0)
-    delta_rahk_doubles = models.IntegerField(default=0)
+    player = models.ForeignKey(Player, db_index=True,on_delete=models.SET_NULL, blank='TRUE', null='True', verbose_name='Гравець')
+    # match = models.ForeignKey(Match, on_delete=models.SET_NULL, blank='TRUE', null='True', verbose_name='Матч')
+    tourney = models.ForeignKey(Tourney, on_delete=models.SET_NULL, blank='TRUE', null='True', verbose_name='Турнір')
+    rank_in_tourney = models.IntegerField(default=0, verbose_name='Зайняте місце')
+    dt = models.DateTimeField()
+    delta_rahk = models.IntegerField(default=0, verbose_name='Отримано балів')
+    # delta_rahk_doubles = models.IntegerField(default=0)
     class Meta:
         verbose_name = 'Рейтинг'
         verbose_name_plural = 'Рейтинги'
         ordering = ('-dt',)
-
-# class Tourney_Group_Name(models.Model):
-#     name = models.CharField(max_length=50)
-#     class Meta:
-#         verbose_name = 'Турнірна група(назва)'
-#         verbose_name_plural = 'Турнірні групи(назва)'
-#         ordering = ('name',)
-#     def __str__(self):
-#         return self.name
-#
-# class Tourney_Round(models.Model):
-#     name = models.CharField(max_length=50)
-#     n_playr = models.IntegerField(default=0)
-#     class Meta:
-#         verbose_name = 'Раунд'
-#         verbose_name_plural = 'Раунди'
-#         ordering = ('name',)
-#     def __str__(self):
-#         return self.name
-
+    def __str__(self):
+        return self.player.__str__() + '  '+ self.tourney.__str__()
 
 
 class Tourney_Group_Player(models.Model):
-    tourney_group = models.ForeignKey(Tourney_Group, on_delete=models.SET_NULL, blank='TRUE', null='True')
+    tourney_group = models.ForeignKey(Tourney_Group, on_delete=models.SET_DEFAULT, default=0, blank='False', null='False', verbose_name='Назва')
     nn = models.IntegerField(default=0)
-    player = models.ForeignKey(Player, on_delete=models.SET_NULL, blank='TRUE', null='True')
+    rank = models.IntegerField(default=1)
+    player = models.ForeignKey(Player, related_name='player', on_delete=models.SET_NULL, blank='TRUE', null='True')
+    player2 = models.ForeignKey(Player,related_name='player2' ,on_delete=models.SET_NULL, blank='TRUE', null='True')
     withdrawal = models.BooleanField(default=False)
     class Meta:
         verbose_name = 'Гравець турніру'
         verbose_name_plural = 'Гравці турніру'
         ordering = ('tourney_group','player',)
+    # def get_rank(self):
+    #     self.rank = self.nn
+    #     return self.rank
+
     def __str__(self):
-        return  self.tourney_group.__str__() + '  '+ self.player.__str__()
+        return  self.tourney_group.__str__() + '  '+ self.player.__str__()+ '  '+ self.player2.__str__()
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)

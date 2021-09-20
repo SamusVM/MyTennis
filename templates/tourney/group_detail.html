@@ -6,124 +6,167 @@
 {% endblock %}
 
 {% block breadcrumb %}
-    <li class="breadcrumb-item" ><h5>
-        <a href="{% url 'tourney_detail' tourney.id %}">
-            <button type="button" class="btn btn-primary"> {{ tourney.name }}</button></a>
+    <li class="breadcrumb-item">
+        <h5>
+            <a href="{% url 'tourney_detail' tourney.id %}">
+                <button type="button" class="btn btn-primary"> {{ tourney.name }}</button>
+            </a>
 
-      {% for foo in tourney.tourney_group_set.all %}
-        <a href="{% url 'tourney_group_detail' tourney.id foo.id %}">
-           <button type="button" class="btn {% if foo.play_off  %} btn-info {% else %} btn-outline-info{% endif %} "> {{ foo.s_name }}</button>
+            {% for foo in tourney.tourney_group_set.all %}
+                <a href="{% url 'tourney_group_detail' tourney.id foo.id %}">
+
+                    <button type="button"
+                            class="btn {% if foo.play_off %} btn-info {% else %} btn-outline-info{% endif %} "> {{ foo.name }}</button>
 
 
-
-        </a>
-      {% endfor %}
-    </h5></li>
+                </a>
+            {% endfor %}
+        </h5>
+    </li>
 
 
 {% endblock %}
 
 {% block content %}
-    {% if pf %}
-       <div class="row mb-4">
+    {#    {% if pf %}#}
+    {% if tourney_group.play_off %}
+        <div class="row mb-4">
             {% for r in pf %}
-             <div class="col">
+                <div class="col">
                     {% for r1 in r %}
-                    <div class="card m-{{ r1.i }}" style="height: {{ r1.perc }}%">
-                        <div class="row my-auto pl-2">
-                           <div class="col-7">
-                               <div >{{ r1.p1 }}  </div>
-                               <div >  {{ r1.p2 }}    </div>
-
-                           </div>
-                           <div class="col-5">
-                                <div class="card border border-white " style="height: 100%">
-                                    <div class="my-auto"> {{ r1.r }}   </div>
-
+                        <div class="card m-{{ r1.i }}" style="height: {{ r1.perc }}%">
+                            <div class="row my-auto pl-2">
+                                <div class="col-8">
+                                    {% if user.is_superuser %}
+                                        <a href="{% url 'matchp' r1.pk %}">
+                                            <div>{{ r1.p1 }} </div>
+                                            <div> {{ r1.p2 }}   </div>
+                                        </a>
+                                        {% if r1.is_match and not r1.pp %}
+                                            <a href="{% url 'fill_1pf' tid=tourney.id gid=tourney_group.id nn=r1.nn %}"> {{ 'fill' }} </a>
+                                        {% endif %}
+                                    {% else %}
+                                        <div>{{ r1.p1 }} </div>
+                                        <div>  {{ r1.p2 }}   </div>
+                                    {% endif %}
                                 </div>
-                           </div>
-
+                                <div class="col-4">
+                                    <div class="card border border-white " style="height: 100%">
+                                        <div class="my-auto"> {{ r1.r }} </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                     </div>
+                    {% endfor %}
+                </div>
             {% endfor %}
-
-             </div>
-
-            {% endfor %}
-
-
-       </div>
+        </div>
     {% endif %}
 
-   {% if tourney_group_body %}
-    <div class="container" >
-     <table class="table table-bordered table-hover">
-  {% if tourney_group_head %}
-    <thead>
-      <tr class="bg-success">
-          {% for th in tourney_group_head %}
-              {% for foo in th %}
-               <th>{{ foo }}</th>
-              {% endfor %}
-           {% endfor %}
-      </tr>
-    </thead>
+    {% if tourney_group_body %}
+        <p>
+        <p>
+        <div class="container">
+            {% if tourney_group.max_rank > 0 %}
+                <table class="table  table-bordered table-hover">
+                    {% if tourney_group_head %}
+                        <thead>
+                        <tr class="bg-success">
+                            {% for th in tourney_group_head %}
+                                {% for foo in th %}
+                                    <th>{{ foo }}</th>
+                                {% endfor %}
+                            {% endfor %}
+                        </tr>
+                        </thead>
+                    {% endif %}
+                    {% if tourney_group_body %}
+                        <tbody>
+                        {% for tb in tourney_group_body %}
+                            <tr>
+                                {% for foo in tb %}
+                                    {% if foo == 'x' %}
+                                        <td class="bg-light"></td>
+                                    {% else %}
+                                        <td>{{ foo }}</td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    {% endif %}
+                </table>
+            {% else %}
+                {% if tourney_players %}
+                    <div class="container ">
+                        <h4>Зареєстровано</h4>
+                        <ol>
+                            {% for r in tourney_players %}
+
+                                <li> {{ r.player }} ({{ r.player.person.city|default_if_none:""}})
+                                    {% if user.is_superuser %}
+                                    <a href="{% url 'players_move_to_group' tourney.id r.id %}"> -> </a>
+                                    {% endif %}
+
+                                </li>
+                            {% endfor %}
+                        </ol>
+                    </div>
+
+                {% endif %}
+            {% endif %}
+        </div>
+    {% else %}
+
+        {% if not tourney_group.play_off %}
+            <p>Відсутні групи.</p>
+        {% endif %}
+
     {% endif %}
-  {% if tourney_group_body %}
-      <tbody>
-      {% for tb in tourney_group_body %}
-      <tr>
-      {% for foo in tb %}
-          {% if foo == 'x' %}
-           <td class="bg-light"></td>
-          {% else %}
-          <td>{{ foo }}</td>
-          {% endif %}
+    {% if last_resusts_list %}
+        <p></p>
+        <p></p>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Гравці</th>
+                    <th>Рахунок</th>
+                    <th>Дата</th>
+                    <th>Корт</th>
+                </tr>
+                </thead>
 
-      {% endfor %}
+                <tbody>
+                {% for r in last_resusts_list %}
+                    <tr>
+                        <td><a href="{% url 'match' r.pk %}"> {{ r.pp }} </a></td>
+                        <td>{{ r.score }}</td>
+                        <td>{{ r.dt|date:"d.m.Y" }}</td>
+                        <td>{{ r.court|default_if_none:"" }}</td>
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        </div>
+    {% else %}
+
+        <p> Відсутні результати.
+            {% if user.is_superuser %}
+                {% if tourney_group.max_rank > 0 %}
+                    <a href="{% url 'generate_matches' tid=tourney.id gid=tourney_group.id %}"> {{ 'Згенерувати матчі' }}</a>
+                {% endif %}
 
 
+                {% if not tourney_group.play_off %}
+                    <a href="{% url 'tourney_group_players_add' tourney.id tourney_group.id %}">Додати гравця</a>
+                {% endif %}
+            {% endif %}
+        </p>
+    {% endif %}
 
-      </tr>
-     {% endfor %}
-    </tbody>
-  {% endif %}
-     </table>
-
-    </div>
-
-   {% endif %}
-   {% if last_resusts_list %}
-<p> </p>
-<p> </p>
-   <div class="table-responsive">
-    <table class="table table-striped">
-      <thead >
-        <tr >
-          <th>Гравці</th>
-          <th>Рахунок</th>
-          <th>Дата</th>
-          <th>Корт</th>
-        </tr>
-      </thead>
-
-      <tbody>
-      {% for r in last_resusts_list %}
-        <tr>
-          <td>{{ r.pp }}</td>
-          <td>{{ r.rez1 }}</td>
-          <td>{{ r.dt|date:"d.m.Y" }}</td>
-          <td>{{ r.court|default_if_none:"" }}</td>
-
-        </tr>
-       {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</div>
-{% else %}
-    <p>Відсутні результати.</p>
-{% endif %}
 
 
 

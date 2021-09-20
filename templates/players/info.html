@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+
+{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><h5><a href="{% url 'players' %}">Гравці</a></h5></li>
+  <li class="breadcrumb-item active">{{ player.person }}</li>
+
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-4">
+        {% if player.person.foto %}
+        <img width="50%" class="card-img-top" src="{{ player.person.foto.url }}" alt="{{ player.person }}">
+       {% endif %}
+  </div>
+
+  <div class="col-sm-4">
+      {{ player.person.first_name }} {{ player.person.last_name }}<p>
+      {{ player.person.d_birth|date:"d.m.Y"  }}<p>
+      {{ player.person.city|default_if_none:"" }}<p>
+      {{ player.hand|default_if_none:"" }}<p>
+  </div>
+
+
+</div>
+
+
+
+
+{% endblock %}

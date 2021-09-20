@@ -15,6 +15,19 @@
 <script src="{% static 'js1/bootstrap.min.js' %}"></script>
 <link rel="icon" href="{% static 'img/ball0.png' %}" type="image/x-icon">
 
+{#Calendar#}
+{#{% load adminmedia %}#}
+{#<script type="text/javascript">#}
+{#    window.__admin_media_prefix__ = "{% filter escapejs %}{% admin_media_prefix %}{% endfilter %}";#}
+{#</script>#}
+{#<script type="text/javascript" src="/admin/jsi18n/"></script>#}
+{#<script type="text/javascript" src="{% admin_media_prefix %}js/core.js"></script>#}
+{##}
+{#<link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/forms.css"/>#}
+{#<link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/base.css"/>#}
+{#<link rel="stylesheet" type="text/css" href="{% admin_media_prefix %}css/widgets.css"/>#}
+
+
   {% block stylesheet %}  {% endblock %}
  {% block script %}  {% endblock %}
 </head>
@@ -35,8 +48,9 @@
 
                 <a class="nav-link dropdown-toggle " href="#" id="navbardrop" data-toggle="dropdown">Турніри</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{% url 'tourney_index' %}">Турніри 2020</a>
-                        <a class="dropdown-item" href="{% url 'poll_index' %}">Архів 2019</a>
+                        <a class="dropdown-item" href="{% url 'tourney_index' %}">Турніри</a>
+                        <a class="dropdown-item" href="{% url 'players' %}">Гравці</a>
+                        <a class="dropdown-item" href="{% url 'tourney_rules' %}">Положення</a>
 
                     </div>
              </li>
@@ -45,7 +59,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Результати</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="{% url 'last_results_index' %}">Останні результати</a>
-                        <a class="dropdown-item" href="{% url 'poll_index' %}">Архів</a>
+                        <a class="dropdown-item" href="{% url 'ranking' %}">Рейтинг</a>
 
                     </div>
              </li>

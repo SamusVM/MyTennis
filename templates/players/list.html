@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+
+{% endblock %}
+
+{% block breadcrumb %}
+{#  <li class="breadcrumb-item"><h5><a href="{% url 'tourney_index' %}">Турніри</a></h5></li>#}
+{#  <li class="breadcrumb-item active">положення</li>#}
+
+{% endblock %}
+
+{% block content %}
+<p> </p>
+<p> </p>
+   <div class="table-responsive">
+    <table class="table table-striped">
+      <thead >
+        <tr >
+          <th>Гравці</th>
+          <th>Місто</th>
+          <th>Дата</th>
+          <th>Стать</th>
+        </tr>
+      </thead>
+
+      <tbody>
+      {% for r in players_list %}
+        <tr>
+          <td><a href="{% url 'player_info' r.pk  %}"> {{ r.person }} </a></td>
+          <td>{{ r.person.city|default_if_none:""  }}</td>
+          <td>{{ r.person.d_birth|date:"d.m.Y" }}</td>
+          <td width="50px">
+              {% if r.person.foto %}
+             <img height="50px" width="50px"  src="{{r.person.foto.url }}" alt="{{ r.person }}"></a>
+                  {% endif %}
+
+         </td>
+
+        </tr>
+       {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

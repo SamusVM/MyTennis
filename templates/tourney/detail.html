@@ -8,16 +8,18 @@
 {% block breadcrumb %}
 
     <li class="breadcrumb-item" ><h5>
-            <a href="{% url 'tourney_detail' tourney.id %}">
-                <button type="button" class="btn btn-primary"> {{ tourney.name }}</button></a>
+            <a href="{% url 'tourney_detail' tourney.id %}">    <button type="button" class="btn btn-primary"> {{ tourney.name }}</button></a>
+          {% if user.is_superuser  %}
+             <a href="{% url 'tourney_group_add' tourney.id %}">    <button type="button" class="btn btn-outline-primary"> + </button></a>
+          {% endif %}
+
       {% for foo in tourney.tourney_group_set.all %}
         <a href="{% url 'tourney_group_detail' tourney.id foo.id %}">
-           <button type="button" class="btn {% if foo.play_off  %} btn-info {% else %} btn-outline-info{% endif %} "> {{ foo.s_name }}</button>
-
-
+           <button type="button" class="btn {% if foo.play_off  %} btn-info {% else %} btn-outline-info{% endif %} "> {{ foo.name }}</button>
 
         </a>
       {% endfor %}
+
     </h5></li>
 
 
@@ -26,7 +28,39 @@
 {% endblock %}
 
 {% block content %}
-{{ tourney.rules }}
+
+{{ tourney.rules|linebreaksbr }}
+  <p></p>
+
+
+    <div class="container " >
+
+    <h4>Зареєстровано</h4>
+ <table class="table">
+ <thead class="bg-light">
+   <td> Гравець </td>
+        {% if user.is_superuser %}
+  <td> Місце </td>
+  <td> Балів</td>
+  <td> </td>
+         {% endif %}
+ </thead>
+ <tbody>
+{% for l,  id, rank,delta in tourney_players_2 %}
+  <tr>
+  <td> {{ l }}</td>
+        {% if user.is_superuser %}
+  <td> {{ rank|default_if_none:""|ljust:"10"  }} </td>
+  <td> {{ delta|default_if_none:"" }}</td>
+  <td> <a href="{% url 'tourney_player_rank' tourney.id id %}"> Add </a></td>
+         {% endif %}
+  </tr>
+    {% endfor %}
+ </tbody>
+ </table>
+</div>
+
+
     {% if last_resusts_list %}
    <div class="table-responsive">
     <table class="table table-striped">

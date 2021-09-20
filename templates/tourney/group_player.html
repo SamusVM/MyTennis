@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Результати{% endblock %}
+{% block stylesheet %}
+
+{% endblock %}
+
+{% block content %}
+    {% if inst %}
+    <h4>{{ inst.tourney_group }}</h4>
+     {% else %}
+      <h4>Add players</h4>
+    {% endif %}
+    <form method="POST" class="post-form ">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-primary">Зберегти</button>
+    </form>
+
+
+{% endblock %}
