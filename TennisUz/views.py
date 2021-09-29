@@ -135,26 +135,78 @@ def get_table_group_by_id(gid):
     tourney_group = get_object_or_404(Tourney_Group, pk=gid)
     # n_players =tourney_group.n_players
     players = Tourney_Group_Player.objects.filter(tourney_group=gid).order_by('nn')
-    # ToDo find place every playr
+    n_players = len(players)
+    # id_player : row_index
+    p_id = {}
+    r_id = {}
+    ii = 0
+    for p in players:
+        p_id[p.nn] = ii
+        r_id[ii] = p.nn
+        ii +=1
+    # ToDo find place every player
     ttt = []
+    for i in range(n_players):
+        ttt.append([])
+        for j in range(n_players):
+            ttt[i].append([0,0,0])
+
     for p1 in players:
-        ttt.append([p1])
-        # p1.rank = 12
+        ttt[p_id[p1.nn]].append(p1)
         for p2 in players:
             mps = Match.objects.filter(tourney_group_id=gid, player1_id=p1.player_id, player2_id=p2.player_id)
             if len(mps)>0:
                 mp = mps[0]
                 v = mp.parse_score()
-                ttt.append([1 if v[1]>v[2] else 0,v[1]-v[2], v[3]-v[4]])
-            else:
-                ttt.append([0,0,0])
+                ttt[p_id[p1.nn]][p_id[p2.nn]] = [1 if v[1] > v[2] else 0, v[1] - v[2], v[3] - v[4]]
+                ttt[p_id[p2.nn]][p_id[p1.nn]] = [1 if v[1] < v[2] else 0, v[2] - v[1], v[4] - v[3]]
 
-    ttt.sort#(key = lambda row: ( row[1], row[2]),reverse=True)
+    grop_poins_set = set()
+    for ti in ttt:
+        pl_p = sum([e[0] for e in ti[:-1]])
+        grop_poins_set.add(pl_p)
+        pl_s = sum([e[1] for e in ti[:-1]])
+        pl_g = sum([e[2] for e in ti[:-1]])
+        ti.append([pl_p, 0, 0, 0, pl_s,pl_g])
+
+    ttt.sort(key = lambda row: row[-1],reverse=True)
+    sorted_players = []
+    for it in ttt:
+        sorted_players.append(it[-2])
+
+    p_id = {t[-2].nn:ttt.index(t) for t in ttt}
+    r_id = {ttt.index(t):t[-2].nn for t in ttt}
+
+    for p1 in sorted_players:
+        for p2 in sorted_players:
+            mps = Match.objects.filter(tourney_group_id=gid, player1_id=p1.player_id, player2_id=p2.player_id)
+            if len(mps)>0:
+                mp = mps[0]
+                v = mp.parse_score()
+                ttt[p_id[p1.nn]][p_id[p2.nn]] = [1 if v[1] > v[2] else 0, v[1] - v[2], v[3] - v[4]]
+                ttt[p_id[p2.nn]][p_id[p1.nn]] = [1 if v[1] < v[2] else 0, v[2] - v[1], v[4] - v[3]]
 
 
+
+    # ToDo add sort by personal games
+    for cp in grop_poins_set:
+        tf = [t for t in ttt if t[-1][0] == cp]
+        ttt_index_filtred = [ttt.index(t) for t in ttt if t[-1][0] == cp]
+        if len(tf)>1:
+            per_points, per_setss, per_gamess = 0, 0, 0
+            for c_tf in tf:
+                for k in ttt_index_filtred:
+                    per_points += c_tf[k][0]
+                    per_setss  += c_tf[k][1]
+                    per_gamess += c_tf[k][2]
+                ttt_ct_id =p_id[c_tf[-2].nn]
+                ttt[ttt_ct_id][-1][1] = per_points
+            pass
+
+    sorted_players = []
+    for it in ttt:
+        sorted_players.append(it[-2])
     #
-
-    n_players = len(players)
     tg = []
     i = 1
     y = [tourney_group.name,'Гравці']
@@ -170,11 +222,12 @@ def get_table_group_by_id(gid):
 
 
 
-    for p in players.order_by('rank'):
+    # for p in players.order_by('rank'):
+    for p in sorted_players:
         p.rank = 2;
         y = [str(i), str(p.player)+'/'+str(p.player2) if p.player2 else str(p.player)]
         matches, points,sets1,sets2, games1,games2 = 0,0,0,0,0,0
-        for p1 in players.order_by('rank'):
+        for p1 in sorted_players:
             if p1.id == p.id:
                 y.append('x')
             else:
@@ -182,7 +235,8 @@ def get_table_group_by_id(gid):
                 m2 = Match.objects.filter(tourney_group_id=gid, player1_id=p1.player_id, player2_id= p.player_id)
                 if len(m1)>0:
                     m=m1[0]
-                    matches+=1
+                    if m.score:
+                        matches+=1
                     if m.s1()>m.s2():
                         points +=1
                     elif (m.withdrawal and m.winner==1):
@@ -195,7 +249,8 @@ def get_table_group_by_id(gid):
                     y.append(m.score1())
                 elif len(m2)>0:
                     m = m2[0]
-                    matches += 1
+                    if m.score:
+                        matches += 1
                     if m.s1() < m.s2():
                         points += 1
                     elif (m.withdrawal and m.winner == 2):

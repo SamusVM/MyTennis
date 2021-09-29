@@ -386,9 +386,9 @@ class Match(models.Model):
                 score1 = '+-'
                 score2 ='-+'
             else:
-                s1 = s.split(',')
-                score2 = ','.join(inv(j) for j in s1)
-                score1 = ','.join(j for j in s1)
+                s1 = s.replace(';',',').split(',')
+                score2 = ', '.join(inv(j) for j in s1)
+                score1 = ', '.join(j for j in s1)
                 l = [del_tb(k).split(':') for k in s1]
                 if len(l)>0:
                     s1 = sum(i[0] > i[1] for i in l)

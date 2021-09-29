@@ -41,19 +41,27 @@
  <a class="navbar-brand" href="{% url 'index' %}"> <img src="{% static 'img/2.png' %}" height="48px"> </a>
 
           <ul class="navbar-nav " >
-               <li class="nav-item">
+             <li class="nav-item">
                 <a class="nav-link" href="{% url 'news_index' %}">Новини</a>
              </li>
-           <li class="nav-item dropdown">
-
-                <a class="nav-link dropdown-toggle " href="#" id="navbardrop" data-toggle="dropdown">Турніри</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{% url 'tourney_index' %}">Турніри</a>
-                        <a class="dropdown-item" href="{% url 'players' %}">Гравці</a>
-                        <a class="dropdown-item" href="{% url 'tourney_rules' %}">Положення</a>
-
-                    </div>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'tourney_index' %}">Турніри</a>
              </li>
+               <li class="nav-item">
+                <a class="nav-link" href="{% url 'tourney_rules' %}">Регламент</a>
+             </li>
+
+<!--           <li class="nav-item dropdown">-->
+
+<!--                <a class="nav-link dropdown-toggle " href="#" id="navbardrop" data-toggle="dropdown">Турніри</a>-->
+<!--                    <div class="dropdown-menu">-->
+<!--                        <a class="dropdown-item" href="{% url 'tourney_index' %}">Турніри</a>-->
+<!--                        <a class="dropdown-item" href="{% url 'players' %}">Гравці</a>-->
+<!--                        <a class="dropdown-item" href="{% url 'tourney_rules' %}">Положення</a>-->
+
+<!--                    </div>-->
+<!--             </li>-->
+
 
              <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Результати</a>

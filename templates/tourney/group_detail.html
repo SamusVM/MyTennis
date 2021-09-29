@@ -140,7 +140,14 @@
                 <tbody>
                 {% for r in last_resusts_list %}
                     <tr>
-                        <td><a href="{% url 'match' r.pk %}"> {{ r.pp }} </a></td>
+                        <td>
+                          {% if user.is_superuser %}
+                            <a href="{% url 'match' r.pk %}"> {{ r.pp }} </a>
+                        {% else %}
+                            {{ r.pp }}
+                            {% endif %}
+                        </td>
+
                         <td>{{ r.score }}</td>
                         <td>{{ r.dt|date:"d.m.Y" }}</td>
                         <td>{{ r.court|default_if_none:"" }}</td>
